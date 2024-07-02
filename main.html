@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <!-- debug -->
+    <div id="debug">
+        <textarea name="console" id="console" class="console" cols="50" rows="10"></textarea>
+        <textarea name="console2" id="console2" class="console" cols="50" rows="10"></textarea>
+        <textarea name="console3" id="console3" class="console" cols="50" rows="10"></textarea>
+    </div>
+
+    <!-- contents -->
+    <div id="content">
+        <div id="score_handle">
+            <button id="score_start">start</button>
+            <button id="score_stop">stop</button>
+            <label for="set_bpm_input">BPM: </label>
+            <input type="text" name="set_bpm" id="set_bpm_input">
+            <button id="set_bpm_button">set BPM</button>
+            <button id="clear_score_button">clear</button>
+            <label for="check_auto_clear">AutoClearMode: </label>
+            <input type="checkbox" id="check_auto_clear">
+            <p id="bpm_disp">BPM: </p>
+        </div>
+        <div id="score" class="score">
+            <!-- spanはテキスト必須 <span class="highlight"> </span> -->
+            <div id="Bars">
+                <div id="barC6" class="bar_b">C6</div>
+                <div id="barB5" class="bar_a">B5</div>
+                <div id="barA5" class="bar_b">A5</div>
+                <div id="barG5" class="bar_a">G5</div>
+                <div id="barF5" class="bar_b">F5</div>
+                <div id="barE5" class="bar_a">E5</div>
+                <div id="barD5" class="bar_b">D5</div>
+                <div id="barC5" class="bar_a">C5</div>
+                <div id="barB4" class="bar_b">B4</div>
+                <div id="barA4" class="bar_a">A4</div>
+                <div id="barG4" class="bar_b">G4</div>
+                <div id="barF4" class="bar_a">F4</div>
+                <div id="barE4" class="bar_b">E4</div>
+                <div id="barD4" class="bar_a">D4</div>
+                <div id="barC4" class="bar_b">C4</div>
+                <div id="barB3" class="bar_a">B3</div>
+                <div id="barA3" class="bar_b">A3</div>
+                <div id="barG3" class="bar_a">G3</div>
+                <div id="barF3" class="bar_b">F3</div>
+                <div id="barE3" class="bar_a">E3</div>
+                <div id="barD3" class="bar_b">D3</div>
+                <div id="barC3" class="bar_a">C3</div>
+                <div id="barB2" class="bar_b">B2</div>
+                <div id="barA2" class="bar_a">A2</div>
+                <div id="barG2" class="bar_b">G2</div>
+                <div id="barF2" class="bar_a">F2</div>
+                <div id="barE2" class="bar_b">E2</div>
+                <div id="barD2" class="bar_a">D2</div>
+                <div id="barC2" class="bar_b">C2</div>
+            </div>
+            <div class="overlay_left"></div>
+            <div class="line_left"></div>
+            <div class="line_middle"></div>
+            <div id="moving_line"></div>
+        </div>
+        <div id="piano" class="piano"></div>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>

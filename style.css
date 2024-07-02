@@ -1,0 +1,175 @@
+.console {
+    width: 200px;
+    height: 50px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #4e5461;
+    flex-direction: column;
+}
+
+/* score_handler */
+#score_start {
+    height: 20px;
+    width: 50px;
+}
+
+#score_stop {
+    height: 20px;
+    width: 50px;
+}
+
+#set_bpm_input {
+    width: 50px;
+}
+
+
+.piano {
+    position: absolute;
+    border: 10px solid #000;
+    height: 8em;
+    background-color: #000;
+    padding: 5px 5px;
+}
+
+.key {
+    border: 1px solid #000;
+    font-size: 0.5em;
+    text-align: center;
+    height: 120px;
+    width: 25px;
+    color: #000;
+    background-color: #fff;
+    float: left;
+    transition: all 0.1s ease-in-out;
+    line-height: 220px; /* 位置調整 */
+    user-select: none; /* chrome */
+    -webkit-touch-callout: none; /* iOS Safari */
+}
+
+.key.black {
+    background-color: #000;
+    color: #fff;
+    font-size: 0.5em;
+    text-align: center;
+    height: 80px;
+    width: 15px;
+    position: relative;
+    margin: 0 -9px;
+    z-index: 1;
+    transition: all 0.1s ease-in-out;
+    line-height: 140px; /* 位置調整 */
+    user-select: none; /* chrome */
+    -webkit-touch-callout: none; /* iOS Safari */
+}
+
+.key:active {
+    transform: translateY(4px);
+}
+
+.key.black:active {
+    transform: translateY(3px);
+}
+
+.bar_a {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    /* 長方形の高さを適切に調整します */
+    background-color: #c5edff;
+    /* 長方形の色を適切に設定します */
+    margin-bottom: 0px;
+    /* 長方形間の間隔を適切に設定します */
+    font-size: 0.6em;
+    /* 親要素のフォントサイズの0.6倍 */
+    z-index: 1;
+}
+
+.bar_b {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    /* 長方形の高さを適切に調整します */
+    background-color: #d3cbfe;
+    /* 長方形の色を適切に設定します */
+    margin-bottom: 0px;
+    /* 長方形間の間隔を適切に設定します */
+    font-size: 0.6em;
+    /* 親要素のフォントサイズの0.6倍 */
+    z-index: 1;
+}
+
+.highlight {
+    position: absolute;
+    /* 以下固定値 */
+    background-color: rgb(140, 0, 0);  /* 色を変えたい部分の背景色 */
+    top: 0;
+    width: 1.57%; /* 1 / 64 */
+    height: 100%; /* barの大きさに対して100% */
+    z-index: 2;
+}
+
+
+.score {
+    position: relative;
+    width: 800px;
+    height: 406px; /* 14 * 29 */
+    background-color: #aaa;
+    margin-bottom: 10px;
+}
+
+
+.overlay_left {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 4%;
+    height: 100%;
+    /* 長方形の高さを適切に調整します */
+    background-color: rgba(81, 81, 81, 0.5);
+    /* 長方形の色を適切に設定します */
+    z-index: 2;
+}
+
+.line_left {
+    position: absolute;
+    top: 0;
+    left: 4%;
+    /* 線の位置を適切に調整します */
+    width: 1px;
+    /* 線の幅を適切に調整します */
+    height: 100%;
+    background-color: #000;
+    /* 線の色を適切に設定します */
+    z-index: 2;
+}
+.line_middle {
+    position: absolute;
+    top: 0;
+    left: 52%;
+    /* 線の位置を適切に調整します */
+    width: 1px;
+    /* 線の幅を適切に調整します */
+    height: 100%;
+    background-color: #000;
+    /* 線の色を適切に設定します */
+    z-index: 2;
+}
+
+#moving_line {
+    position: absolute;
+    top: 0;
+    left: 4%;
+    /* 線の位置を適切に調整します */
+    width: 1.5px;
+    /* 線の幅を適切に調整します */
+    height: 100%;
+    background-color: #2a1f34;
+    /* 線の色を適切に設定します */
+    z-index: 2;
+}
+
