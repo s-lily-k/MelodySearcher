@@ -7,7 +7,10 @@ const MyConsole3 = document.getElementById("console3");
 let pianoKeys = {};
 
 // キーのリスト
-const keys = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ':', ']'];
+const keys = [
+    '', 'W', 'E', '', 'T', 'Y', 'U', '', 'O', 'P', '', '[',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ':', ']',
+];
 // 各キーが押されているかどうかを保持するオブジェクト
 let isKeyDown = {};
 // 初期化
@@ -160,13 +163,22 @@ function drawScore() {
             let targetKey = keyboardBindings[key];
             MyConsole2.textContent += "scale: " + targetKey + "\n";
             try {
-                let bar = document.getElementById("bar" + targetKey);
                 let nowat = scoreMovingLine.style.left;
                 let target = find456(parseFloat(nowat));
                 target = (target + 1.56 > 100 ? 98.44 : target); // 左端処理
                 target = (target < 4 ? 4 : target); // 右端処理
-                // MyConsole2.textContent = "target: " + target;
-                let addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
+
+                let addString; // htmlに追加する文字列
+                let bar; // CもC#も同じ扱いとする
+                
+                if (targetKey[1] == '#') {
+                    bar = document.getElementById("bar" + targetKey[0]+targetKey[2]);
+                    addString = '<div class="highlight sharp" style="left: ' + target + '%;"></div>';
+                }
+                else {
+                    bar = document.getElementById("bar" + targetKey[0]+targetKey[1]);
+                    addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
+                }
                 bar.innerHTML += addString;
             } catch (error) {
                 // nothing
@@ -187,7 +199,7 @@ scoreStopButton.addEventListener('click', stopScore);
 BPMinputButton.addEventListener('click', setBPM);
 scoreClearButton.addEventListener('click', clearScore);
 
-// keydownイベント
+// isKeyDownでKey入力されているかどうかを保持
 window.addEventListener('keydown', (event) => {
     var key = event.key.toUpperCase();
     if (keys.includes(key)) {
@@ -204,14 +216,15 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-// keyupイベント
+// isKeyDownでKey入力されているかどうかを保持
 window.addEventListener('keyup', (event) => {
-    var key = event.key;
-    if (keys.includes(key.toUpperCase())) {
-        isKeyDown[key.toUpperCase()] = false;
+    var key = event.key.toUpperCase();
+    if (keys.includes(key)) {
+        isKeyDown[key] = false;
     }
 });
 
+// key animation 用
 window.addEventListener('keydown', function(e){
     var key = e.key.toUpperCase();
     if(keyboardBindings[key]) {
@@ -219,6 +232,7 @@ window.addEventListener('keydown', function(e){
     }
 })
 
+// key animation 用
 window.addEventListener('keyup', function (e) {
     let key = e.key.toUpperCase();
     if (keyboardBindings[key]) {
@@ -280,29 +294,6 @@ for (let i = 0; i < numOfScales; i++) {
 // ---------------------------------TEST----------------------------------- //
 // ------------------------------------------------------------------------ //
 
-// let mm = 1.56;
-// for (let i = 0; i < 10; i++) {
-//     for (let t = 0; t < 100; t++) {
-//         let tmp = i + 0.01*t;
-//         let tmp2 = findN(tmp, mm);
-//         // MyConsole.textContent += "i.k " + tmp + " => " + tmp2 + "\r\n";
-//     }
-// }
-
-
-// function testDraw() {
-//     let bartestC = document.getElementById("barC4");
-//     let nowat = scoreMovingLine.style.left;
-//     let percentage = findN(parseFloat(nowat));
-//     let target = find456(parseFloat(nowat));
-//     target = (target+1.56 > 100 ? 100-1.56: target);
-//     target = (target < 4.0 ? 4.0: target);
-//     let addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
-//     bartestC.innerHTML += addString;
-//     // MyConsole.textContent += "nowat: " + target + "\n";
-//     // MyConsole.textContent += addString;
-// }
-// scoreStartButton.addEventListener('click', testDraw);
 
 function checkIsKeyDown() {
     MyConsole3.textContent = keys.join(",") + "\n";

@@ -117,6 +117,16 @@ body {
     z-index: 2;
 }
 
+.highlight.sharp {
+    position: absolute;
+    /* 以下固定値 */
+    background-color: rgb(240, 148, 210);  /* 色を変えたい部分の背景色 */
+    top: -0.6em;
+    width: 1.57%; /* 1 / 64 */
+    height: 100%; /* barの大きさに対して100% */
+    z-index: 2;
+}
+
 
 .score {
     position: relative;
