@@ -157,34 +157,36 @@ function find456(k) {
 
 // キーボードを押した時、movingLineがある部分の配列の中身をtrueにする
 function drawScore() {
-    Object.entries(isKeyDown).forEach(([key, value]) => {
-        if (value === true) {
-            MyConsole2.textContent = "key: " + key + "\n";
-            let targetKey = keyboardBindings[key];
-            MyConsole2.textContent += "scale: " + targetKey + "\n";
-            try {
-                let nowat = scoreMovingLine.style.left;
-                let target = find456(parseFloat(nowat));
-                target = (target + 1.56 > 100 ? 98.44 : target); // 左端処理
-                target = (target < 4 ? 4 : target); // 右端処理
+    if (scoreIsActive) {
+        Object.entries(isKeyDown).forEach(([key, value]) => {
+            if (value === true) {
+                MyConsole2.textContent = "key: " + key + "\n";
+                let targetKey = keyboardBindings[key];
+                MyConsole2.textContent += "scale: " + targetKey + "\n";
+                try {
+                    let nowat = scoreMovingLine.style.left;
+                    let target = find456(parseFloat(nowat));
+                    target = (target + 1.56 > 100 ? 98.44 : target); // 左端処理
+                    target = (target < 4 ? 4 : target); // 右端処理
 
-                let addString; // htmlに追加する文字列
-                let bar; // CもC#も同じ扱いとする
-                
-                if (targetKey[1] == '#') {
-                    bar = document.getElementById("bar" + targetKey[0]+targetKey[2]);
-                    addString = '<div class="highlight sharp" style="left: ' + target + '%;"></div>';
+                    let addString; // htmlに追加する文字列
+                    let bar; // CもC#も同じ扱いとする
+                    
+                    if (targetKey[1] == '#') {
+                        bar = document.getElementById("bar" + targetKey[0]+targetKey[2]);
+                        addString = '<div class="highlight sharp" style="left: ' + target + '%;"></div>';
+                    }
+                    else {
+                        bar = document.getElementById("bar" + targetKey[0]+targetKey[1]);
+                        addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
+                    }
+                    bar.innerHTML += addString;
+                } catch (error) {
+                    // nothing
                 }
-                else {
-                    bar = document.getElementById("bar" + targetKey[0]+targetKey[1]);
-                    addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
-                }
-                bar.innerHTML += addString;
-            } catch (error) {
-                // nothing
             }
-        }
-    });
+        });
+    }
 }
 setInterval(drawScore, 1);
 
@@ -216,11 +218,15 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-// isKeyDownでKey入力されているかどうかを保持
 window.addEventListener('keyup', (event) => {
+    // isKeyDownでKey入力されているかどうかを保持
     var key = event.key.toUpperCase();
     if (keys.includes(key)) {
         isKeyDown[key] = false;
+    }
+    // space key で on/off切り替え用
+    if (event.key == ' ') {
+        scoreIsActive = !scoreIsActive;
     }
 });
 
@@ -307,15 +313,11 @@ MyConsole3.textContent = values.join(",");
 
 
 
-
+// 配列を用意する
 // ・音を鳴らす
 // ・emptyじゃなかったらどんどん保存していくモードを追加する
-// start stop wo spaceに割り当て
 
 //piano(鍵盤)もpiano(音程)もキーボード(PC)もkey:valueもkey…
 
-
-// Sharpを追加する
 // startするまで描けないようにする
 // クリックにも割当て
-// アニメーション割当て
