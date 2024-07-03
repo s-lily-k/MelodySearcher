@@ -89,7 +89,7 @@ function GoToNextLine() {
         startTime = Date.now();
     }
     positionOfMovingLine += movingLineOffset;
-    positionOfMovingLine = Math.round(positionOfMovingLine*1000) / 1000;
+    positionOfMovingLine = Math.round(positionOfMovingLine * 1000) / 1000;
     MyConsole.textContent = "bar: " + positionOfMovingLine;
     if (positionOfMovingLine > 100) {
         // autoClearがonなら譜面を消す
@@ -99,7 +99,7 @@ function GoToNextLine() {
         positionOfMovingLine = movingLineOffsetLeft + movingLineOffset;
         if (startTime != null) {
             let delta = Date.now() - startTime;
-            BPMdisp.textContent = "BPM: " + scoreBPM + " | keisan: " + (254/scoreBPM).toFixed(3) + " | deltaTime: " + delta + "(ms) = " + (delta/1000) + "(s)";
+            BPMdisp.textContent = "BPM: " + scoreBPM + " | keisan: " + (254 / scoreBPM).toFixed(3) + " | deltaTime: " + delta + "(ms) = " + (delta / 1000) + "(s)";
         }
     }
 }
@@ -117,22 +117,22 @@ function moveLine() {
         // 更新
         scoreMovingLine.style.left = positionOfMovingLine + "%";
     }
-    setTimeout(moveLine, (1000/64) * (253.968/scoreBPM)); // 253.968は人によるかもしれない……
+    setTimeout(moveLine, (1000 / 64) * (253.968 / scoreBPM)); // 253.968は人によるかもしれない……
 }
 moveLine();
 
 function setBPM() {
     let inputValue = BPMinput.value;
-    scoreBPM = (!inputValue ? 1: inputValue);
+    scoreBPM = (!inputValue ? 1 : inputValue);
     BPMdisp.innerText = "BPM: " + scoreBPM;
 }
 
 function clearScore() {
     Object.entries(keyboardBindings).forEach(([key, value]) => {
         try {
-            let bar = document.getElementById("bar"+value);
+            let bar = document.getElementById("bar" + value);
             bar.innerHTML = value; // 中身を初期化
-        }catch(error) {
+        } catch (error) {
             // nothing
         }
     });
@@ -142,13 +142,13 @@ function clearScore() {
 function find456(k) {
     let start = 4.0;
     let gap = movingLineOffset;
-    if (k < start) {return -1;}
+    if (k < start) { return -1; }
     else {
         while (start < k) {
             start += gap;
-            start = Math.round(start*1000) / 1000;
+            start = Math.round(start * 1000) / 1000;
         }
-        return Math.floor(start*100) / 100 - gap*1; // 一個前
+        return Math.floor(start * 100) / 100 - gap * 1; // 一個前
     }
 }
 
@@ -160,11 +160,11 @@ function drawScore() {
             let targetKey = keyboardBindings[key];
             MyConsole2.textContent += "scale: " + targetKey + "\n";
             try {
-                let bar = document.getElementById("bar"+targetKey);
+                let bar = document.getElementById("bar" + targetKey);
                 let nowat = scoreMovingLine.style.left;
                 let target = find456(parseFloat(nowat));
-                target = (target+1.56 > 100 ? 98.44: target); // 左端処理
-                target = (target < 4 ? 4: target); // 右端処理
+                target = (target + 1.56 > 100 ? 98.44 : target); // 左端処理
+                target = (target < 4 ? 4 : target); // 右端処理
                 // MyConsole2.textContent = "target: " + target;
                 let addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
                 bar.innerHTML += addString;
@@ -176,9 +176,9 @@ function drawScore() {
 }
 setInterval(drawScore, 1);
 
-function playSound(note){}
-function fadeOutSound(note){}
-function stopSound(note){}
+function playSound(note) { }
+function fadeOutSound(note) { }
+function stopSound(note) { }
 
 
 // addEventListener //
@@ -189,22 +189,19 @@ scoreClearButton.addEventListener('click', clearScore);
 
 // keydownイベント
 window.addEventListener('keydown', (event) => {
-    var key = event.key;
-    if (keys.includes(key.toUpperCase())) {
-        isKeyDown[key.toUpperCase()] = true;
+    var key = event.key.toUpperCase();
+    if (keys.includes(key)) {
+        isKeyDown[key] = true;
     }
     // autoClearがoffになっていれば
     // Backspaceキーが押された場合
     if (autoClearCheckBox != null) {
         if (!autoClearCheckBox.checked) {
-            if (key === 'Backspace' || key === 8) {
+            if (event.key === 'Backspace' || event.key === 8) {
                 clearScore();
             }
         }
     }
-    // else if (key = '[') {
-    //     clearScore();
-    // }
 });
 
 // keyupイベント
@@ -212,6 +209,20 @@ window.addEventListener('keyup', (event) => {
     var key = event.key;
     if (keys.includes(key.toUpperCase())) {
         isKeyDown[key.toUpperCase()] = false;
+    }
+});
+
+window.addEventListener('keydown', function(e){
+    var key = e.key.toUpperCase();
+    if(keyboardBindings[key]) {
+        pianoKeys[keyboardBindings[key]].classList.add('active');
+    }
+})
+
+window.addEventListener('keyup', function (e) {
+    let key = e.key.toUpperCase();
+    if (keyboardBindings[key]) {
+        pianoKeys[keyboardBindings[key]].classList.remove('active');
     }
 });
 
@@ -311,3 +322,9 @@ MyConsole3.textContent = values.join(",");
 // start stop wo spaceに割り当て
 
 //piano(鍵盤)もpiano(音程)もキーボード(PC)もkey:valueもkey…
+
+
+// Sharpを追加する
+// startするまで描けないようにする
+// クリックにも割当て
+// アニメーション割当て

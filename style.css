@@ -75,6 +75,10 @@ body {
     transform: translateY(3px);
 }
 
+.key.active {
+    transform: translateY(4px);
+}
+
 .bar_a {
     position: relative;
     width: 100%;
