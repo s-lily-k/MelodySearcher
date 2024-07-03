@@ -6,17 +6,15 @@ const MyConsole3 = document.getElementById("console3");
 // 鍵盤のリスト (key, blackKey)
 let pianoKeys = {};
 
-// キーのリスト
-const keys = [
-    '', 'W', 'E', '', 'T', 'Y', 'U', '', 'O', 'P', '', '[',
-    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ':', ']',
-];
-// 各キーが押されているかどうかを保持するオブジェクト
+// キーボードのキーのリスト // 多分使わないで済む
+// const keyboardKeys = [
+//     '', 'W', 'E', '', 'T', 'Y', 'U', '', 'O', 'P', '', '[',
+//     'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ':', ']',
+// ];
+
+// 各ピアノのキーが押されているかどうかを保持するオブジェクト
 let isKeyDown = {};
-// 初期化
-keys.forEach(key => {
-    isKeyDown[key] = false;
-});
+// let keyClickedNow = null;
 
 const scaleList = [
     "C2", "D2", "E2", "F2", "G2", "A2", "B2", // 0 ~ 6
@@ -30,6 +28,18 @@ const whiteKeys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 const blackKeys = ['C#', 'D#', '', 'F#', 'G#', 'A#', ''];
 const numOfScales = 30; // C2 ~ C6
 const keyboardBindings = {
+    '': 'C2',
+    '': 'D2',
+    '': 'E2',
+    '': 'F2',
+    '': 'G2',
+    '': 'A2',
+    '': 'B2',
+    '': 'C#2',
+    '': 'D#2',
+    '': 'F#2',
+    '': 'G#2',
+    '': 'A#2',
     'A': 'C3',
     'S': 'D3',
     'D': 'E3',
@@ -37,20 +47,37 @@ const keyboardBindings = {
     'G': 'G3',
     'H': 'A3',
     'J': 'B3',
-    'K': 'C4',
-    'L': 'D4',
-    ';': 'E4',
-    ':': 'F4',
-    ']': 'G4',
     'W': 'C#3',
     'E': 'D#3',
     'T': 'F#3',
     'Y': 'G#3',
     'U': 'A#3',
+    'K': 'C4',
+    'L': 'D4',
+    ';': 'E4',
+    ':': 'F4',
+    ']': 'G4',
     'O': 'C#4',
     'P': 'D#4',
     '[': 'F#4',
+    '': 'G#4',
+    '': 'A#4',
+    '': 'C5',
+    '': 'D5',
+    '': 'E5',
+    '': 'F5',
+    '': 'G5',
+    '': 'A5',
+    '': 'B5',
+    '': 'C#5',
+    '': 'D#5',
+    '': 'F#5',
+    '': 'G#5',
+    '': 'A#5',
 };
+
+const bars = document.getElementById("Bars");
+const barsChildren = bars.getElementsByTagName("div");
 const scoreStartButton = document.getElementById("score_start");
 const scoreStopButton = document.getElementById("score_stop");
 const scoreMovingLine = document.getElementById("moving_line");
@@ -93,7 +120,7 @@ function GoToNextLine() {
     }
     positionOfMovingLine += movingLineOffset;
     positionOfMovingLine = Math.round(positionOfMovingLine * 1000) / 1000;
-    MyConsole.textContent = "bar: " + positionOfMovingLine;
+    // MyConsole.textContent = "bar: " + positionOfMovingLine;
     if (positionOfMovingLine > 100) {
         // autoClearがonなら譜面を消す
         if (autoClearCheckBox.checked) {
@@ -131,14 +158,11 @@ function setBPM() {
 }
 
 function clearScore() {
-    Object.entries(keyboardBindings).forEach(([key, value]) => {
-        try {
-            let bar = document.getElementById("bar" + value);
-            bar.innerHTML = value; // 中身を初期化
-        } catch (error) {
-            // nothing
-        }
-    });
+    // barsの各divの中身を初期化する
+    for (let i = 0; i < barsChildren.length; i++) {
+        let initialstr = barsChildren[i].id[3] + barsChildren[i].id[4]; // 左端の文字
+        barsChildren[i].innerHTML = initialstr;
+    }
 }
 
 // drawScore で使う
@@ -155,14 +179,12 @@ function find456(k) {
     }
 }
 
-// キーボードを押した時、movingLineがある部分の配列の中身をtrueにする
+// キーボードorマウスで鍵盤を押した時、movingLineがある部分の配列の中身をtrueにする
 function drawScore() {
     if (scoreIsActive) {
-        Object.entries(isKeyDown).forEach(([key, value]) => {
+        Object.entries(isKeyDown).forEach(([note, value]) => {
             if (value === true) {
-                MyConsole2.textContent = "key: " + key + "\n";
-                let targetKey = keyboardBindings[key];
-                MyConsole2.textContent += "scale: " + targetKey + "\n";
+                MyConsole2.textContent = "note: " + note + "\n";
                 try {
                     let nowat = scoreMovingLine.style.left;
                     let target = find456(parseFloat(nowat));
@@ -172,17 +194,17 @@ function drawScore() {
                     let addString; // htmlに追加する文字列
                     let bar; // CもC#も同じ扱いとする
                     
-                    if (targetKey[1] == '#') {
-                        bar = document.getElementById("bar" + targetKey[0]+targetKey[2]);
+                    if (note[1] == '#') {
+                        bar = document.getElementById("bar" + note[0] + note[2]);
                         addString = '<div class="highlight sharp" style="left: ' + target + '%;"></div>';
                     }
                     else {
-                        bar = document.getElementById("bar" + targetKey[0]+targetKey[1]);
+                        bar = document.getElementById("bar" + note[0] + note[1]);
                         addString = '<div class="highlight" style="left: ' + target + '%;"></div>';
                     }
                     bar.innerHTML += addString;
                 } catch (error) {
-                    // nothing
+                    MyConsole.textContent = error;
                 }
             }
         });
@@ -202,10 +224,18 @@ BPMinputButton.addEventListener('click', setBPM);
 scoreClearButton.addEventListener('click', clearScore);
 
 // isKeyDownでKey入力されているかどうかを保持
+// キーボードとマウス両方に対応できるようにfunction化
+function setKeyIsDown(note) {
+    isKeyDown[note] = true;
+}
+function setKeyIsNotDown(note) {
+    isKeyDown[note] = false;
+}
+
 window.addEventListener('keydown', (event) => {
     var key = event.key.toUpperCase();
-    if (keys.includes(key)) {
-        isKeyDown[key] = true;
+    if(keyboardBindings[key]) {
+        setKeyIsDown(keyboardBindings[key]);
     }
     // autoClearがoffになっていれば
     // Backspaceキーが押された場合
@@ -221,8 +251,8 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
     // isKeyDownでKey入力されているかどうかを保持
     var key = event.key.toUpperCase();
-    if (keys.includes(key)) {
-        isKeyDown[key] = false;
+    if(keyboardBindings[key]) {
+        setKeyIsNotDown(keyboardBindings[key]);
     }
     // space key で on/off切り替え用
     if (event.key == ' ') {
@@ -230,11 +260,21 @@ window.addEventListener('keyup', (event) => {
     }
 });
 
+
+// これもキーボードとマウス用にfunction化
+function setKeyActive(note) {
+    pianoKeys[note].classList.add('active');
+}
+
+function setKeyInActive(note) {
+    pianoKeys[note].classList.remove('active');
+}
+
 // key animation 用
 window.addEventListener('keydown', function(e){
-    var key = e.key.toUpperCase();
-    if(keyboardBindings[key]) {
-        pianoKeys[keyboardBindings[key]].classList.add('active');
+    let key = e.key.toUpperCase();
+    if (keyboardBindings[key]) {
+        setKeyActive(keyboardBindings[key]); // active化
     }
 })
 
@@ -242,7 +282,7 @@ window.addEventListener('keydown', function(e){
 window.addEventListener('keyup', function (e) {
     let key = e.key.toUpperCase();
     if (keyboardBindings[key]) {
-        pianoKeys[keyboardBindings[key]].classList.remove('active');
+        setKeyInActive(keyboardBindings[key]); // 非active化
     }
 });
 
@@ -259,10 +299,19 @@ for (let i = 0; i < 4; i++) {
         key.dataset.note = whiteKeys[j] + (i + 2); // Adjusted the octave
         // key.textContent = key.dataset.note;
         key.addEventListener('mousedown', function () {
-            playSound(this.dataset.note);
+            playSound(this.dataset.note); // 音
+            setKeyActive(this.dataset.note); // アニメーション
+            setKeyIsDown(this.dataset.note); // 判定
         });
         key.addEventListener('mouseup', function () {
-            fadeOutSound(this.dataset.note);
+            fadeOutSound(this.dataset.note); // 音
+            setKeyInActive(this.dataset.note); // アニメーション
+            setKeyIsNotDown(this.dataset.note); // 判定
+        });
+        key.addEventListener('mouseout', function () {
+            fadeOutSound(this.dataset.note); // 音
+            setKeyInActive(this.dataset.note); // アニメーション
+            setKeyIsNotDown(this.dataset.note); // 判定
         });
         document.getElementById('piano').appendChild(key);
         // 鍵盤リストに追加
@@ -273,10 +322,19 @@ for (let i = 0; i < 4; i++) {
             blackKey.dataset.note = blackKeys[j] + (i + 2); // Adjusted the octave
             // blackKey.textContent = blackKey.dataset.note;
             blackKey.addEventListener('mousedown', function () {
-                playSound(this.dataset.note);
+                playSound(this.dataset.note); // 音
+                setKeyActive(this.dataset.note); // アニメーション
+                setKeyIsDown(this.dataset.note); // 判定
             });
             blackKey.addEventListener('mouseup', function () {
-                fadeOutSound(this.dataset.note);
+                fadeOutSound(this.dataset.note); // 音
+                setKeyInActive(this.dataset.note); // アニメーション
+                setKeyIsNotDown(this.dataset.note); // 判定
+            });
+            blackKey.addEventListener('mouseout', function () {
+                fadeOutSound(this.dataset.note); // 音
+                setKeyInActive(this.dataset.note); // アニメーション
+                setKeyIsNotDown(this.dataset.note); // 判定
             });
             document.getElementById('piano').appendChild(blackKey);
             // 鍵盤リストに追加
@@ -286,6 +344,10 @@ for (let i = 0; i < 4; i++) {
 }
 // 鍵盤に文字を追加
 changePianoKeyText();
+// pianoKeyIsDown 初期化
+Object.keys(pianoKeys).forEach(key => {
+    isKeyDown[key] = false;
+});
 
 
 let scales = new Array(numOfScales); // 各音階
@@ -302,14 +364,13 @@ for (let i = 0; i < numOfScales; i++) {
 
 
 function checkIsKeyDown() {
-    MyConsole3.textContent = keys.join(",") + "\n";
     let values = Object.values(isKeyDown);
-    MyConsole3.textContent += values.join(",");
+    MyConsole3.textContent = values.join(",");
 }
-// setInterval(checkIsKeyDown, 10);
+setInterval(checkIsKeyDown, 10);
 
-let values = Object.keys(pianoKeys);
-MyConsole3.textContent = values.join(",");
+let keys_ = Object.keys(pianoKeys);
+// MyConsole3.textContent = keys_.join(",");
 
 
 
