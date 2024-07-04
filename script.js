@@ -6,15 +6,8 @@ const MyConsole3 = document.getElementById("console3");
 // 鍵盤のリスト (key, blackKey)
 let pianoKeys = {};
 
-// キーボードのキーのリスト // 多分使わないで済む
-// const keyboardKeys = [
-//     '', 'W', 'E', '', 'T', 'Y', 'U', '', 'O', 'P', '', '[',
-//     'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ':', ']',
-// ];
-
 // 各ピアノのキーが押されているかどうかを保持するオブジェクト
 let isKeyDown = {};
-// let keyClickedNow = null;
 
 const scaleList = [
     "C2", "D2", "E2", "F2", "G2", "A2", "B2", // 0 ~ 6
@@ -74,6 +67,7 @@ const keyboardBindings = {
     '': 'F#5',
     '': 'G#5',
     '': 'A#5',
+    '': 'C6',
 };
 
 const bars = document.getElementById("Bars");
@@ -211,6 +205,32 @@ function drawScore() {
     }
 }
 setInterval(drawScore, 1);
+
+function isPlaying(audioElement) {
+    return !audioElement.paused;
+}
+
+function PlaySound() {
+    MyConsole.textContent = "";
+    if (scoreIsActive) {
+        Object.keys(pianoKeys).forEach(note => {
+            if (isKeyDown[note] == true) {
+                if (audioElements[note]) {
+                    MyConsole.textContent += note + "1\n"; // debug
+                }
+                else {
+                    MyConsole.textContent += note + "2\n"; // debug
+    
+                    let fileName = note.replace('#', 'sharp');
+                    let audioUrl = './audio/' + fileName + '.mp3'; // Use the mp3 file
+                    audioElements[note] = new Audio(audioUrl);
+                    audioElements[note].play().catch(error => {MyConsole.textContent += error});
+                }
+            }
+        });
+    }
+}
+setInterval(PlaySound, 1);
 
 function playSound(note) { }
 function fadeOutSound(note) { }
