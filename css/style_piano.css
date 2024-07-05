@@ -1,12 +1,15 @@
 .piano {
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     border: 10px solid #000;
     height: 8em;
     background-color: #000;
     padding: 5px 5px;
+    margin-bottom: 0;
 }
 
 .key {
+    position: relative;
     border: 1px solid #000;
     font-size: 0.5em;
     text-align: center;
@@ -16,19 +19,19 @@
     background-color: #fff;
     float: left;
     transition: all 0.1s ease-in-out;
-    line-height: 220px; /* 位置調整 */
+    line-height: 220px; /* 文字の位置調整 */
     user-select: none; /* chrome */
     -webkit-touch-callout: none; /* iOS Safari */
 }
 
 .key.black {
+    position: relative;
     background-color: #000;
     color: #fff;
     font-size: 0.5em;
     text-align: center;
     height: 80px;
     width: 15px;
-    position: relative;
     margin: 0 -9px;
     z-index: 1;
     transition: all 0.1s ease-in-out;
