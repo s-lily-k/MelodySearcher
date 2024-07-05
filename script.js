@@ -1,4 +1,4 @@
-// variable //
+// variables //
 const MyConsole = document.getElementById("console");
 const MyConsole2 = document.getElementById("console2");
 const MyConsole3 = document.getElementById("console3");

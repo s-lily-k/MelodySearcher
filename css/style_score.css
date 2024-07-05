@@ -1,18 +1,7 @@
-.console {
-    width: 200px;
-    height: 50px;
-}
+/* --- --- --- --- --- --- --- */
+/* --- --- score_handler - --- */
+/* --- --- --- --- --- --- --- */
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #c6e1a7;
-    flex-direction: column;
-}
-
-/* score_handler */
 #score_start {
     height: 20px;
     width: 50px;
@@ -27,57 +16,9 @@ body {
     width: 50px;
 }
 
-
-.piano {
-    position: absolute;
-    border: 10px solid #000;
-    height: 8em;
-    background-color: #000;
-    padding: 5px 5px;
-}
-
-.key {
-    border: 1px solid #000;
-    font-size: 0.5em;
-    text-align: center;
-    height: 120px;
-    width: 25px;
-    color: #000;
-    background-color: #fff;
-    float: left;
-    transition: all 0.1s ease-in-out;
-    line-height: 220px; /* 位置調整 */
-    user-select: none; /* chrome */
-    -webkit-touch-callout: none; /* iOS Safari */
-}
-
-.key.black {
-    background-color: #000;
-    color: #fff;
-    font-size: 0.5em;
-    text-align: center;
-    height: 80px;
-    width: 15px;
-    position: relative;
-    margin: 0 -9px;
-    z-index: 1;
-    transition: all 0.1s ease-in-out;
-    line-height: 140px; /* 位置調整 */
-    user-select: none; /* chrome */
-    -webkit-touch-callout: none; /* iOS Safari */
-}
-
-.key:active {
-    transform: translateY(4px);
-}
-
-.key.black:active {
-    transform: translateY(3px);
-}
-
-.key.active {
-    transform: translateY(4px);
-}
+/* --- --- --- --- --- --- --- */
+/* --- --- score_display - --- */
+/* --- --- --- --- --- --- --- */
 
 .bar_a {
     position: relative;
@@ -107,6 +48,7 @@ body {
     z-index: 1;
 }
 
+/* 音程を表すバー */
 .highlight {
     position: absolute;
     /* 以下固定値 */
@@ -185,36 +127,4 @@ body {
     background-color: #2a1f34;
     /* 線の色を適切に設定します */
     z-index: 2;
-}
-
-#container {
-    display: flex;
-}
-#content1 {
-}
-#content2 {
-}
-.box25{
-    width: 250px;
-    height: 250px;
-    position: relative;
-    background: #fff0cd;
-    box-shadow: 0px 0px 0px 5px #fff0cd;
-    border: dashed 2px white;
-    padding: 0.2em 0.5em;
-    color: #454545;
-}
-.box25:after{
-    position: absolute;
-    content: '';
-    right: -7px;
-    top: -7px;
-    border-width: 0 15px 15px 0;
-    border-style: solid;
-    border-color: #ffdb88 #fff #ffdb88;
-    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
-}
-.box25 p {
-    margin: 0; 
-    padding: 0;
 }
