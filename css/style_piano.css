@@ -1,10 +1,10 @@
 /* 鍵盤全体 */
 .piano {
     position: relative;
+    height: 8em;
     margin-top: 10px;
     margin-bottom: 10px;
     border: 15px solid #000; /* 一回り大きく囲う */
-    height: 8em;
     background-color: #000;
 }
 
@@ -28,11 +28,9 @@
 /* 黒鍵 */
 .key.black {
     position: relative;
-    z-index: 1;
     width: 15px;
     height: 80px;
     margin: 0 -9px;
-    border: none; /* 黒鍵には境界線が不要な場合 */
     background-color: #000;
     color: #fff;
     font-size: 0.5em;
@@ -40,6 +38,7 @@
     text-align: center;
     user-select: none; /* chrome */
     -webkit-touch-callout: none; /* iOS Safari */
+    z-index: 1;
     transition: all 0.1s ease-in-out;
 }
 

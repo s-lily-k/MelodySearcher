@@ -1,0 +1,27 @@
+.lyrics_display_box {
+    position: relative;
+    height: 20em;
+    margin: 10px;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    background: #fff0cd;
+    box-shadow: 0px 0px 0px 5px #fff0cd;
+    color: #454545;
+}
+
+/* めくれた部分 */
+.lyrics_display_box:after {
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.lyrics_display_box p {
+    margin: 0; 
+    padding: 0;
+}

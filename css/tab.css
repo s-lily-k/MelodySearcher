@@ -78,10 +78,12 @@ small {
 }
 
 .js-switchingContents {
-    height: 0;
+    width: 800px;
+    height: 0px;
     opacity: 0;
-    overflow: hidden;
+    overflow: auto;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .js-switchingContents.is-open {

@@ -5,17 +5,23 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style_score.css">
     <link rel="stylesheet" type="text/css" href="css/style_piano.css">
+    <link rel="stylesheet" type="text/css" href="css/style_lyric.css">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
 </head>
 
 <body>
-    <!-- debug -->
+    <!-- --- --- --- --- -->
+    <!-- debug console - -->
+    <!-- --- --- --- --- -->
     <div id="debug">
         <textarea name="console" id="console" class="console" cols="50" rows="10"></textarea>
         <textarea name="console2" id="console2" class="console" cols="50" rows="10"></textarea>
         <textarea name="console3" id="console3" class="console" cols="50" rows="10"></textarea>
     </div>
-    
+
+    <!-- --- --- --- --- -->
+    <!-- main contents - -->
+    <!-- --- --- --- --- -->
     <!-- タブ参考：https://www.coder-ao.com/blog/532/ -->
     <div class="c-switching">
         <div class="c-switchingTabs">
@@ -24,9 +30,10 @@
             <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02"><span>LYRICS</span></button>
             <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type03">その3</button>
         </div>
+
         <div class="c-switchingContainer">
             <div class="js-switchingContents is-open c-switchingContainer__contents" data-switch-contents="type01">
-                <!-- contents: score, piano -->
+                <!-- --- contents: score, piano --- -->
                 <div id="content1">
                     <div id="score_handler">
                         <button id="score_start">start</button>
@@ -39,6 +46,7 @@
                         <input type="checkbox" id="check_auto_clear">
                         <p id="bpm_disp">BPM: </p>
                     </div>
+
                     <div id="score" class="score">
                         <!-- spanはテキスト必須 <span class="highlight"> </span> -->
                         <div id="Bars">
@@ -79,40 +87,46 @@
                     </div>
                 </div>
             </div>
+
             <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type02">
-                <!-- contents: lyrics -->
+                <!-- --- contents: lyrics --- -->
                 <div id="content2">
                     <div id="display_lyrics">
-                        <div class="box25">
-
+                        <div class="lyrics_display_box">
+                            <p>Now I'm ready, I'm ready to go</p>
+                            <p>花が咲く時が来たんだ</p>
+                            <p>Are you ready? わかるでしょ</p>
+                            <p>やってみせる Make it through</p>
+                            <br>
+                            <p>ほら そんなソワソワしてたら</p>
+                            <p>時は過ぎちゃうから 今すぐにさ</p>
+                            <p>Let's work it out</p>
                         </div>
-
                     </div>
+
                     <div id="input_lyrics">
                     </div>
                 </div>
             </div>
+
             <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type03">
-                <p>その3のコンテンツ内容が表示されます。<br>ボタンがどこにあっても大丈夫！</p>
+                <p>その3のコンテンツ内容が表示されます</p>
                 <!-- <button class="js-switchingTab c-btn is-current" type="button" data-switch-tab="type01">その1を表示する</button> -->
             </div>
         </div>
     </div>
     <div id="piano" class="piano"></div>
 
-    <!-- <select class="c-switchingTabs--select js-switchingSelect">
-        <option value="type01" selected>その1 を表示する</option>
-        <option value="type02">その2 を表示する</option>
-        <option value="type03">その3 を表示する</option>
-    </select> -->
 
-    <!-- <button class="js-switchingTab c-btn is-current" type="button" data-switch-tab="type01">その1 を表示する</button> -->
-    <!-- <button class="js-switchingTab c-btn" type="button" data-switch-tab="type02">その2 を表示する</button> -->
-    <!-- <button class="js-switchingTab c-btn" type="button" data-switch-tab="type03">その3 を表示する</button> -->
-
-
+    <!-- --- --- -->
+    <!-- sources -->
+    <!-- --- --- -->
+    <script src="./script/globals.js"></script>
+    <script src="./script/lists.js"></script>
     <script src="./script/script.js"></script>
     <script src="./script/script_switch.js"></script>
+    <script src="./script/onload.js"></script>
+    <script src="./script/test.js"></script>
 </body>
 
 </html>
