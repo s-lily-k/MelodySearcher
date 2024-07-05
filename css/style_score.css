@@ -2,16 +2,19 @@
 /* --- --- score_handler - --- */
 /* --- --- --- --- --- --- --- */
 
+/* start button */
 #score_start {
     height: 20px;
     width: 50px;
 }
 
+/* stop button */
 #score_stop {
     height: 20px;
     width: 50px;
 }
 
+/* text input: bpm */
 #set_bpm_input {
     width: 50px;
 }
@@ -20,56 +23,7 @@
 /* --- --- score_display - --- */
 /* --- --- --- --- --- --- --- */
 
-.bar_a {
-    position: relative;
-    width: 100%;
-    height: 14px;
-    /* 長方形の高さを適切に調整します */
-    background-color: #c5edff;
-    /* 長方形の色を適切に設定します */
-    margin-bottom: 0px;
-    /* 長方形間の間隔を適切に設定します */
-    font-size: 0.6em;
-    /* 親要素のフォントサイズの0.6倍 */
-    z-index: 1;
-}
-
-.bar_b {
-    position: relative;
-    width: 100%;
-    height: 14px;
-    /* 長方形の高さを適切に調整します */
-    background-color: #d3cbfe;
-    /* 長方形の色を適切に設定します */
-    margin-bottom: 0px;
-    /* 長方形間の間隔を適切に設定します */
-    font-size: 0.6em;
-    /* 親要素のフォントサイズの0.6倍 */
-    z-index: 1;
-}
-
-/* 音程を表すバー */
-.highlight {
-    position: absolute;
-    /* 以下固定値 */
-    background-color: rgb(140, 0, 0);  /* 色を変えたい部分の背景色 */
-    top: 0;
-    width: 1.57%; /* 1 / 64 */
-    height: 100%; /* barの大きさに対して100% */
-    z-index: 2;
-}
-
-.highlight.sharp {
-    position: absolute;
-    /* 以下固定値 */
-    background-color: rgb(240, 148, 210);  /* 色を変えたい部分の背景色 */
-    top: -0.6em;
-    width: 1.57%; /* 1 / 64 */
-    height: 100%; /* barの大きさに対して100% */
-    z-index: 2;
-}
-
-
+/* 譜面全体 */
 .score {
     position: relative;
     width: 800px;
@@ -78,53 +32,91 @@
     margin-bottom: 10px;
 }
 
+/* aとbでscoreを作る */
+.bar_a {
+    color: blue; /* 文字色 */
+    position: relative;
+    width: 100%;
+    height: 14px;
+    background-color: #c5edff;
+    margin-bottom: 0px;
+    font-size: 0.6em; /* 親要素のフォントサイズの0.6倍 */
+    z-index: 1;
+}
 
+/* aとbでscoreを作る */
+.bar_b {
+    color: green; /* 文字色 */
+    position: relative;
+    width: 100%;
+    height: 14px;
+    background-color: #d3cbfe;
+    margin-bottom: 0px;
+    font-size: 0.6em; /* 親要素のフォントサイズの0.6倍 */
+    z-index: 1;
+}
+
+/* 入力された音程を表すバー */
+.highlight {
+    position: absolute;
+    background-color: rgb(140, 0, 0);  /* バーの色 */
+    top: 0;
+    width: 1.57%; /* 1 / 64 = 1.57 */
+    height: 100%; /* barの大きさに対して100% */
+    z-index: 2;
+}
+
+/* 入力された音程を表すバー(半音用) */
+.highlight.sharp {
+    position: absolute;
+    /* 以下固定値 */
+    background-color: rgb(240, 148, 210);  /* バーの色 */
+    top: -0.6em;
+    width: 1.57%; /* 1 / 64 = 1.57 */
+    height: 100%; /* barの大きさに対して100% */
+    z-index: 2;
+}
+
+/* 譜面左側の灰色部分 */
 .overlay_left {
     position: absolute;
     top: 0;
     left: 0%;
     width: 4%;
     height: 100%;
-    /* 長方形の高さを適切に調整します */
-    background-color: rgba(81, 81, 81, 0.5);
-    /* 長方形の色を適切に設定します */
+    background-color: rgba(167, 167, 167, 0.5);
     z-index: 2;
 }
 
+/* 灰色部分との境界線 */
 .line_left {
     position: absolute;
     top: 0;
-    left: 4%;
-    /* 線の位置を適切に調整します */
+    left: 4%; /* 左端の位置 */
     width: 1px;
-    /* 線の幅を適切に調整します */
     height: 100%;
     background-color: #000;
-    /* 線の色を適切に設定します */
     z-index: 2;
 }
+
+/* 半小節分の位置の区切り線 */
 .line_middle {
     position: absolute;
     top: 0;
     left: 52%;
-    /* 線の位置を適切に調整します */
     width: 1px;
-    /* 線の幅を適切に調整します */
     height: 100%;
     background-color: #000;
-    /* 線の色を適切に設定します */
     z-index: 2;
 }
 
+/* 譜面をなぞる線 */
 #moving_line {
     position: absolute;
     top: 0;
     left: 4%;
-    /* 線の位置を適切に調整します */
     width: 1.5px;
-    /* 線の幅を適切に調整します */
     height: 100%;
     background-color: #2a1f34;
-    /* 線の色を適切に設定します */
     z-index: 2;
 }

@@ -2,6 +2,20 @@
 /* --- --- comment template -- --- */
 /* --- --- --- --- --- --- --- --- */
 
+/* --- 表記順 --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+/* position, display, float, clear, visibility, z-index, justify-content */
+/* align-items, flex-direction */
+
+/* width, height, margin, padding, border */
+
+/* background, color */
+
+/* font, font-size, line-height, text-align, text-indent, text-transform */
+/* letter-spacing, word-spacing, white-space, text-decoration */
+
+/* user-select, transform, cursor, gap, ... */
+/* --- ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+
 /* ----------------------------------------------------- */
 /* TODO: */
 /* ----------------------------------------------------- */
@@ -11,24 +25,25 @@
 /* --- --- debug console - --- --- */
 /* --- --- --- --- --- --- --- --- */
 
+/* debug console 全体 */
 .console {
     width: 200px;
     height: 50px;
+    /* font-size: small; */
 }
 
 /* --- --- --- --- --- */
 /* --- --- main -- --- */
 /* --- --- --- --- --- */
 
+/* 全体 */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
-    background-color: #c6e1a7;
     flex-direction: column;
-}
 
-#container {
-    display: flex;
+    height: auto;
+    
+    background-color: #c6e1a7;
 }

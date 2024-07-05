@@ -15,12 +15,13 @@
         <textarea name="console2" id="console2" class="console" cols="50" rows="10"></textarea>
         <textarea name="console3" id="console3" class="console" cols="50" rows="10"></textarea>
     </div>
+    
     <!-- タブ参考：https://www.coder-ao.com/blog/532/ -->
     <div class="c-switching">
         <div class="c-switchingTabs">
             <button class="js-switchingTab is-current c-switchingTabs__tab" type="button"
-                data-switch-tab="type01"><span>その1</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02">その2</button>
+                data-switch-tab="type01"><span>SCORE</span></button>
+            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02"><span>LYRICS</span></button>
             <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type03">その3</button>
         </div>
         <div class="c-switchingContainer">
@@ -76,7 +77,6 @@
                         <div class="line_middle"></div>
                         <div id="moving_line"></div>
                     </div>
-                    <div id="piano" class="piano"></div>
                 </div>
             </div>
             <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type02">
@@ -98,6 +98,7 @@
             </div>
         </div>
     </div>
+    <div id="piano" class="piano"></div>
 
     <!-- <select class="c-switchingTabs--select js-switchingSelect">
         <option value="type01" selected>その1 を表示する</option>
