@@ -16,8 +16,8 @@ let audioElements = {}; // 音データ
 // score表示用
 const bars = document.getElementById("Bars");
 const barsChildren = bars.getElementsByTagName("div");
-const scoreStartButton = document.getElementById("score_start");
-const scoreStopButton = document.getElementById("score_stop");
+const scoreStartStopButton = document.getElementById("start_stop_button");
+const scoreStartStopButtonLabel = document.getElementById("label_start_stop");
 const scoreMovingLine = document.getElementById("moving_line");
 const scoreClearButton = document.getElementById("clear_score_button");
 const autoClearCheckBox = document.getElementById("check_auto_clear");

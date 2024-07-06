@@ -41,13 +41,12 @@ function GoToNextLine() {
     scoreMovingLine.style.left = positionOfMovingLine + "%";
 }
 
-/* start/stopでScoreがActiveかどうか切り替える */
-function startScore() {
-    scoreIsActive = true;
+/* Activeかどうか切り替える */
+function flipScore() {
+    scoreIsActive = !scoreIsActive; // 反転させる
+    scoreStartStopButtonLabel.textContent = (scoreIsActive ? "STOP": "PLAY");
 }
-function stopScore() {
-    scoreIsActive = false;
-}
+
 function moveLine() {
     // activeかつtab1が選ばれていれば
     if (type01Tab.classList.contains('is-current') && scoreIsActive) {
@@ -152,8 +151,7 @@ function stopSound(note) { }
 
 
 // addEventListener //
-scoreStartButton.addEventListener('click', startScore);
-scoreStopButton.addEventListener('click', stopScore);
+scoreStartStopButton.addEventListener('click', flipScore);
 BPMinputButton.addEventListener('click', setBPM);
 scoreClearButton.addEventListener('click', clearScore);
 
@@ -186,7 +184,8 @@ window.addEventListener('keyup', (event) => {
     // space key で on/off切り替え用
     if (type01Tab.classList.contains('is-current')) {
         if (event.key == ' ') {
-            scoreIsActive = !scoreIsActive;
+            // scoreIsActive = !scoreIsActive;
+            scoreStartStopButton.click();
         }
     }
 });
