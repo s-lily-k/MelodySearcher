@@ -44,7 +44,7 @@ function GoToNextLine() {
 /* Activeかどうか切り替える */
 function flipScore() {
     scoreIsActive = !scoreIsActive; // 反転させる
-    scoreStartStopButtonLabel.textContent = (scoreIsActive ? "STOP": "PLAY");
+    scoreStartStopButtonLabel.textContent = (scoreIsActive ? "STOP" : "PLAY");
 }
 
 function moveLine() {
@@ -100,7 +100,7 @@ function drawScore() {
 
                     let addString; // htmlに追加する文字列
                     let bar; // CもC#も同じ扱いとする
-                    
+
                     if (note[1] == '#') {
                         bar = document.getElementById("bar" + note[0] + note[2]);
                         addString = '<div class="highlight sharp" style="left: ' + target + '%;"></div>';
@@ -123,27 +123,53 @@ function isPlaying(audioElement) {
     return !audioElement.paused;
 }
 
+let fadeOutOffset = 0.001;
+let fastFadeOutOffset = 0.008;
+
 function PlaySound() {
     MyConsole.textContent = "";
+    MyConsole4.textContent = "";
     if (scoreIsActive) {
-        Object.keys(pianoKeys).forEach(note => {
-            if (isKeyDown[note] == true) {
-                if (audioElements[note]) {
-                    MyConsole.textContent += note + "\n"; // debug
+        Object.keys(pianoKeys).forEach(note => { // 全キーを調査
+            // MyConsole4.textContent += note + ": " + isThisKeyFirstDown[note] + "\n";
+            if (isKeyDown[note] == true) { // 押されてる
+                MyConsole.textContent += note + "\n"; // debug
+                if (isThisKeyFirstDown[note]) { // 長押しの始めの時か？
+                    // keyupしたときにtrueになる
+                    isThisKeyFirstDown[note] = false;
+                    /* if isPlaying or not 再生中であろうと必ずここに来る。 */
+                    // 再生を0地点に戻す
+                    audioElements[note].currentTime = 0;
+                    // 音量を元に戻す
+                    audioElements[note].volume = 1.0;
+                    // 再生開始
+                    audioElements[note].play();
                 }
-                else {
-                    MyConsole.textContent += note + "\n"; // debug
-    
-                    let fileName = note.replace('#', 'sharp');
-                    let audioUrl = './audio/' + fileName + '.mp3'; // Use the mp3 file
-                    audioElements[note] = new Audio(audioUrl);
-                    audioElements[note].play().catch(error => {MyConsole.textContent += error});
+                else { // 長押し中か？
+                    // もう音を鳴らしたはずなので追加は何もしない
+                    // 既に鳴ってる音をフェードさせる
+                    fadeOutSound(audioElements[note], fadeOutOffset);
                 }
+            }
+            else if (isKeyDown[note] == false) { // 押されてない
+                /* 速いペースでフェードアウトする */
+                fadeOutSound(audioElements[note], fastFadeOutOffset);
+            }
+            if (isPlaying(audioElements[note])) {
+                MyConsole4.textContent += note + " is playing " + "\n";
             }
         });
     }
 }
 setInterval(PlaySound, 1);
+
+function fadeOutSound(audioElement, offset) {
+    if (isPlaying(audioElement)) {
+        /* もし再生中なら */
+        // 音量を一定量減らす// PlaySoundが毎秒呼ばれるので。
+        audioElement.volume = ((audioElement.volume-offset) < 0 ? 0: audioElement.volume-offset); // 0を下回る時の処理。
+    }
+}
 
 
 // addEventListener //
@@ -199,7 +225,7 @@ window.addEventListener('keydown', (event) => {
         }
     }
 
-    if(keyboardBindings[key]) {
+    if (keyboardBindings[key]) {
         setKeyIsDown(keyboardBindings[key]);
     }
 });
@@ -207,8 +233,9 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
     // isKeyDownでKey入力されているかどうかを保持
     var key = event.key.toUpperCase();
-    if(keyboardBindings[key]) {
+    if (keyboardBindings[key]) {
         setKeyIsNotDown(keyboardBindings[key]);
+        isThisKeyFirstDown[keyboardBindings[key]] = true;
     }
 });
 
@@ -223,7 +250,7 @@ function setKeyInActive(note) {
 }
 
 // key animation 用
-window.addEventListener('keydown', function(e){
+window.addEventListener('keydown', function (e) {
     let key = e.key.toUpperCase();
     if (keyboardBindings[key]) {
         setKeyActive(keyboardBindings[key]); // active化

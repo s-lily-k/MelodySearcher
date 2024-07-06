@@ -57,7 +57,13 @@ changePianoKeyText();
 // pianoKeyIsDown 初期化
 Object.keys(pianoKeys).forEach(key => {
     isKeyDown[key] = false;
+    isThisKeyFirstDown[key] = true;
+
+    let insertName = key.replace("#", "sharp");
+    let audioUrl = "./audio/" + insertName + ".mp3";
+    audioElements[key] = new Audio(audioUrl);
 });
+MyConsole4.textContent += Object.keys(audioElements).join(",");
 
 
 let scales = new Array(numOfScales); // 各音階

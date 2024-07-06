@@ -9,6 +9,7 @@ let pianoKeys = {};
 
 // 各ピアノのキーが押されているかどうかを保持するオブジェクト
 let isKeyDown = {};
+let isThisKeyFirstDown = {};
 
 let keysPressed = {};
 let audioElements = {}; // 音データ
@@ -47,3 +48,4 @@ const type02Tab = document.querySelector('.js-switchingTab[data-switch-tab="type
 const InputLyrics = document.getElementById('lyrics_input_box');
 const lyricsBox = document.getElementById("lyrics_display_box");
 const changeLyricsButton = document.getElementById('decide_change_lyrics_button')
+let Lyrics = "";
