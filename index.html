@@ -17,6 +17,8 @@
         <textarea name="console" id="console" class="console" cols="50" rows="10"></textarea>
         <textarea name="console2" id="console2" class="console" cols="50" rows="10"></textarea>
         <textarea name="console3" id="console3" class="console" cols="50" rows="10"></textarea>
+        <textarea name="console4" id="console4" class="console" cols="50" rows="10"></textarea>
+        <button id="hogehoge">CSS完全に理解した</button>
     </div>
 
     <!-- --- --- --- --- -->
@@ -26,9 +28,10 @@
     <div class="c-switching">
         <div class="c-switchingTabs">
             <button class="js-switchingTab is-current c-switchingTabs__tab" type="button"
-                data-switch-tab="type01"><span>SCORE</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02"><span>LYRICS</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type03">その3</button>
+                data-switch-tab="type01"><span>1.SCORE</span></button>
+            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02"><span>2.LYRICS</span></button>
+            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type03"><span>3.INPUT</span></button>
+            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type04"><span>最高音周りとか</span></button>
         </div>
 
         <div class="c-switchingContainer">
@@ -92,26 +95,21 @@
                 <!-- --- contents: lyrics --- -->
                 <div id="content2">
                     <div id="display_lyrics">
-                        <div class="lyrics_display_box">
-                            <p>Now I'm ready, I'm ready to go</p>
-                            <p>花が咲く時が来たんだ</p>
-                            <p>Are you ready? わかるでしょ</p>
-                            <p>やってみせる Make it through</p>
-                            <br>
-                            <p>ほら そんなソワソワしてたら</p>
-                            <p>時は過ぎちゃうから 今すぐにさ</p>
-                            <p>Let's work it out</p>
+                        <div id="lyrics_display_box" class="lyrics_display_box">
                         </div>
-                    </div>
-
-                    <div id="input_lyrics">
                     </div>
                 </div>
             </div>
 
             <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type03">
-                <p>その3のコンテンツ内容が表示されます</p>
-                <!-- <button class="js-switchingTab c-btn is-current" type="button" data-switch-tab="type01">その1を表示する</button> -->
+                <div id="input_lyrics">
+                        <textarea name="lyrics_input_box" id="lyrics_input_box" class="lyrics_input_box" cols="20" rows="40"></textarea>
+                        <button id="decide_change_lyrics_button">変更</button>
+                    </div>
+                </div>
+            </div>
+            <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type04">
+                <!-- <textarea name="testarea2" id="testarea2" cols="20" rows="40"></textarea> -->
             </div>
         </div>
     </div>
@@ -123,8 +121,9 @@
     <!-- --- --- -->
     <script src="./script/globals.js"></script>
     <script src="./script/lists.js"></script>
-    <script src="./script/script.js"></script>
+    <script src="./script/score_piano.js"></script>
     <script src="./script/script_switch.js"></script>
+    <script src="./script/lyrics.js"></script>
     <script src="./script/onload.js"></script>
     <script src="./script/test.js"></script>
 </body>

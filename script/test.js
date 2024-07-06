@@ -22,3 +22,4 @@ let keys_ = Object.keys(pianoKeys);
 
 // startするまで描けないようにする
 // クリックにも割当て
+

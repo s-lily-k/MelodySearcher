@@ -4,19 +4,21 @@
 
 /* start button */
 #score_start {
-    height: 20px;
     width: 50px;
 }
 
 /* stop button */
 #score_stop {
-    height: 20px;
     width: 50px;
 }
 
 /* text input: bpm */
 #set_bpm_input {
     width: 50px;
+}
+
+#hogehoge {
+    height: 18px;
 }
 
 /* --- --- --- --- --- --- --- */
@@ -28,30 +30,30 @@
     position: relative;
     width: 800px;
     height: 406px; /* 14 * 29 */
-    background-color: #aaa;
     margin-bottom: 10px;
+    background-color: #aaa;
 }
 
 /* aとbでscoreを作る */
 .bar_a {
-    color: blue; /* 文字色 */
     position: relative;
     width: 100%;
     height: 14px;
-    background-color: #c5edff;
     margin-bottom: 0px;
+    background-color: #c5edff;
+    color: blue; /* 文字色 */
     font-size: 0.6em; /* 親要素のフォントサイズの0.6倍 */
     z-index: 1;
 }
 
 /* aとbでscoreを作る */
 .bar_b {
-    color: green; /* 文字色 */
     position: relative;
     width: 100%;
     height: 14px;
-    background-color: #d3cbfe;
     margin-bottom: 0px;
+    background-color: #d3cbfe;
+    color: green; /* 文字色 */
     font-size: 0.6em; /* 親要素のフォントサイズの0.6倍 */
     z-index: 1;
 }
@@ -59,21 +61,20 @@
 /* 入力された音程を表すバー */
 .highlight {
     position: absolute;
-    background-color: rgb(140, 0, 0);  /* バーの色 */
     top: 0;
     width: 1.57%; /* 1 / 64 = 1.57 */
     height: 100%; /* barの大きさに対して100% */
+    background-color: rgb(140, 0, 0);  /* バーの色 */
     z-index: 2;
 }
 
 /* 入力された音程を表すバー(半音用) */
 .highlight.sharp {
     position: absolute;
-    /* 以下固定値 */
-    background-color: rgb(240, 148, 210);  /* バーの色 */
     top: -0.6em;
     width: 1.57%; /* 1 / 64 = 1.57 */
     height: 100%; /* barの大きさに対して100% */
+    background-color: rgb(240, 148, 210);  /* バーの色 */
     z-index: 2;
 }
 

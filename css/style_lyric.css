@@ -1,6 +1,11 @@
 .lyrics_display_box {
     position: relative;
-    height: 20em;
+    width: auto;
+    min-height: 20em;
+    height: auto;
+    max-height: 30em; /* これ以上はスクロールになる */
+    overflow-x: hidden; /* スクロールを無効にする */
+    overflow-y: auto; /* スクロールを可能にする */
     margin: 10px;
     border: dashed 2px white;
     padding: 0.2em 0.5em;
@@ -24,4 +29,21 @@
 .lyrics_display_box p {
     margin: 0; 
     padding: 0;
+}
+
+/* 歌詞入力用 */
+.lyrics_input_box {
+    width: 95%;
+    height: 20em;
+}
+
+/* test */
+.lyrics {
+    color: #454545;
+}
+
+.pitch-info {
+    color: #888;
+    font-size: 0.6em;
+    display: block;
 }
