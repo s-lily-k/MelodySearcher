@@ -4,8 +4,9 @@
 
 
 function checkIsKeyDown() {
-    let values = Object.values(isKeyDown);
-    MyConsole3.textContent = values.join(",");
+    // let values = Object.values(isKeyDown);
+    let values = pitchArray.join(",");
+    MyConsole3.textContent = values;
 }
 setInterval(checkIsKeyDown, 10);
 

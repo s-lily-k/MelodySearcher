@@ -129,10 +129,10 @@ function PlaySound() {
         Object.keys(pianoKeys).forEach(note => {
             if (isKeyDown[note] == true) {
                 if (audioElements[note]) {
-                    MyConsole.textContent += note + "1\n"; // debug
+                    MyConsole.textContent += note + "\n"; // debug
                 }
                 else {
-                    MyConsole.textContent += note + "2\n"; // debug
+                    MyConsole.textContent += note + "\n"; // debug
     
                     let fileName = note.replace('#', 'sharp');
                     let audioUrl = './audio/' + fileName + '.mp3'; // Use the mp3 file
@@ -144,10 +144,6 @@ function PlaySound() {
     }
 }
 setInterval(PlaySound, 1);
-
-function playSound(note) { }
-function fadeOutSound(note) { }
-function stopSound(note) { }
 
 
 // addEventListener //
@@ -171,7 +167,7 @@ window.addEventListener('keydown', (event) => {
     if (type01Tab.classList.contains('is-current')) {
         if (autoClearCheckBox != null) {
             if (!autoClearCheckBox.checked) {
-                if (event.key === 'Backspace' || event.key === 8) {
+                if (event.key === 'Backspace') {
                     clearScore();
                 }
             }
@@ -192,6 +188,17 @@ window.addEventListener('keyup', (event) => {
 
 window.addEventListener('keydown', (event) => {
     var key = event.key.toUpperCase();
+    if (type02Tab.classList.contains('is-current')) {
+        if (!isKeyDown[key]) {
+            if (keyboardBindings[key]) {
+                inputNotesToLyrics(keyboardBindings[key]);
+            }
+        }
+        if (event.key === 'Backspace') {
+            popBackFromInputNotes();
+        }
+    }
+
     if(keyboardBindings[key]) {
         setKeyIsDown(keyboardBindings[key]);
     }
