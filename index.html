@@ -24,7 +24,6 @@
     <!-- --- --- --- --- -->
     <!-- main contents - -->
     <!-- --- --- --- --- -->
-    <!-- タブ参考：https://www.coder-ao.com/blog/532/ -->
     <div class="c-switching">
         <div class="c-switchingTabs">
             <button class="js-switchingTab is-current c-switchingTabs__tab" type="button"
@@ -95,8 +94,9 @@
                 <!-- --- contents: lyrics --- -->
                 <div id="content2">
                     <div id="display_lyrics">
-                        <div id="lyrics_display_box" class="lyrics_display_box">
-                        </div>
+                        <div id="lyrics_display_box" class="lyrics_display_box"></div>
+                        <input type="checkbox" id="lyrics_switch_mode" class="lyrics_switch_mode" checked>
+                        <label id="lyrics_switch_mode_label" for="lyrics_switch_mode" class="lyrics_switch_mode_label">音程入力モード</label>
                     </div>
                 </div>
             </div>
@@ -127,5 +127,10 @@
     <script src="./script/onload.js"></script>
     <script src="./script/test.js"></script>
 </body>
+
+<!-- 参考 -->
+<!-- https://www.coder-ao.com/blog/532/ tab -->
+<!-- https://saruwakakun.com/html-css/reference/box textbox -->
+<!-- https://ws-pilgrimage.jp/webcreate/2594/ button-->
 
 </html>

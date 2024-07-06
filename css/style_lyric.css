@@ -18,8 +18,8 @@
 .lyrics_display_box:after {
     position: absolute;
     content: '';
-    right: -7px;
-    top: -7px;
+    right: -0px;
+    top: -0px;
     border-width: 0 15px 15px 0;
     border-style: solid;
     border-color: #ffdb88 #fff #ffdb88;
@@ -35,6 +35,12 @@
 .lyrics_input_box {
     width: 95%;
     height: 20em;
+}
+
+/* 歌詞(音程)入力モード切り替え */
+.lyrics_switch_mode {
+    width: 20px;
+    height: 20px;
 }
 
 /* test */
