@@ -16,7 +16,7 @@ let keys_ = Object.keys(pianoKeys);
 function checkInputPitchArray() {
     MyConsole5.textContent = "[inputPitchArray] : \n";
     if (inputPitchArray.length > 0) {
-        MyConsole5.textContent += inputPitchArray.join(", ");
+        MyConsole5.textContent += inputPitchArray.join(" ");
     }
 }
 setInterval(checkInputPitchArray, 10);
@@ -24,7 +24,7 @@ setInterval(checkInputPitchArray, 10);
 function checkInputLyricsArray() {
     MyConsole6.textContent = "[inputLyricsArray] : \n";
     if (inputLyricsArray.length > 0) {
-        MyConsole6.textContent += inputLyricsArray.join(", ");
+        MyConsole6.textContent += inputLyricsArray; // string
     }
 }
 setInterval(checkInputLyricsArray, 10);
