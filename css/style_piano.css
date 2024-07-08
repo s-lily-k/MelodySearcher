@@ -1,6 +1,8 @@
 /* 鍵盤全体 */
 .piano {
     position: relative;
+    min-width: min(100%, 760px);
+    width: 60%;
     height: 8em;
     margin-top: 10px;
     margin-bottom: 10px;

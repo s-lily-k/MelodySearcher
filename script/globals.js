@@ -3,6 +3,8 @@ const MyConsole = document.getElementById("console");
 const MyConsole2 = document.getElementById("console2");
 const MyConsole3 = document.getElementById("console3");
 const MyConsole4 = document.getElementById("console4");
+const MyConsole5 = document.getElementById("console5");
+const MyConsole6 = document.getElementById("console6");
 
 // 鍵盤のリスト (key, blackKey)
 let pianoKeys = {};
@@ -45,7 +47,6 @@ const type01Tab = document.querySelector('.js-switchingTab[data-switch-tab="type
 const type02Tab = document.querySelector('.js-switchingTab[data-switch-tab="type02"]');
 
 // lyrics
-const InputLyrics = document.getElementById('lyrics_input_box');
+const inputLyrics = document.getElementById('lyrics_input_box');
 const lyricsBox = document.getElementById("lyrics_display_box");
 const changeLyricsButton = document.getElementById('decide_change_lyrics_button')
-let Lyrics = "";

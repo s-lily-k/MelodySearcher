@@ -13,10 +13,18 @@ setInterval(checkIsKeyDown, 10);
 let keys_ = Object.keys(pianoKeys);
 // MyConsole3.textContent = keys_.join(",");
 
+function checkInputPitchArray() {
+    MyConsole5.textContent = "[inputPitchArray] : \n";
+    if (inputPitchArray.length > 0) {
+        MyConsole5.textContent += inputPitchArray.join(", ");
+    }
+}
+setInterval(checkInputPitchArray, 10);
 
-
-// 配列を用意する
-// ・音を鳴らす
-// ・emptyじゃなかったらどんどん保存していくモードを追加する
-
-//piano(鍵盤)もpiano(音程)もキーボード(PC)もkey:valueもkey…
+function checkInputLyricsArray() {
+    MyConsole6.textContent = "[inputLyricsArray] : \n";
+    if (inputLyricsArray.length > 0) {
+        MyConsole6.textContent += inputLyricsArray.join(", ");
+    }
+}
+setInterval(checkInputLyricsArray, 10);

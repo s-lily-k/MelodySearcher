@@ -1,9 +1,3 @@
-* {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #333;
-}
-
 select {
     width: min(100%, 300px);
     height: 2em;
@@ -39,9 +33,13 @@ small {
     margin-top: 2em;
 }
 
+.c-switching {
+    width: 140%;
+}
+
 .c-switchingTabs {
     display: flex;
-    gap: 20px;
+    gap: 4px;
     margin-bottom: -1px;
 }
 
@@ -49,11 +47,11 @@ small {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 200px;
+    min-width: 50px;
     padding: 0.5em 1em;
     border: 1px solid #333;
     border-bottom: none;
-    border-radius: 20px 20px 0 0;
+    border-radius: 4px 4px 0 0;
     background: lightgray;
     font-size: 20px;
     line-height: 1.4;
@@ -67,7 +65,8 @@ small {
 }
 
 .c-switchingContainer {
-    width: min(100%, 1000px);
+    max-width: min(90%, 1000px);
+    width: 100%;
     padding: 1em 1em 1em;
     border: 1px solid #333;
     background: lightblue;
@@ -78,7 +77,8 @@ small {
 }
 
 .js-switchingContents {
-    width: 800px;
+    /* width: 800px; */
+    width: 100%;
     height: 0px;
     opacity: 0;
     overflow: auto;

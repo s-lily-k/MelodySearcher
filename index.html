@@ -10,123 +10,137 @@
 </head>
 
 <body>
-    <!-- --- --- --- --- -->
-    <!-- debug console - -->
-    <!-- --- --- --- --- -->
-    <div id="debug">
-        <textarea name="console" id="console" class="console" cols="50" rows="10"></textarea>
-        <textarea name="console2" id="console2" class="console" cols="50" rows="10"></textarea>
-        <textarea name="console3" id="console3" class="console" cols="50" rows="10"></textarea>
-        <textarea name="console4" id="console4" class="console" cols="50" rows="10"></textarea>
-        <button id="hogehoge">CSS完全に理解した</button>
+    <div>
+        <div id="TopContents">
+            <!-- --- --- --- --- -->
+            <!-- main contents - -->
+            <!-- --- --- --- --- -->
+            <div class="c-switching">
+                <div class="c-switchingTabs">
+                    <button class="js-switchingTab is-current c-switchingTabs__tab" type="button"
+                        data-switch-tab="type01"><span>1.SCORE</span></button>
+                    <button class="js-switchingTab c-switchingTabs__tab" type="button"
+                        data-switch-tab="type02"><span>2.LYRICS</span></button>
+                    <button class="js-switchingTab c-switchingTabs__tab" type="button"
+                        data-switch-tab="type03"><span>3.INPUT</span></button>
+                    <button class="js-switchingTab c-switchingTabs__tab" type="button"
+                        data-switch-tab="type04"><span>最高音周りとか</span></button>
+                </div> <!-- c-switchingTabs -->
+
+                <div class="c-switchingContainer">
+                    <div class="js-switchingContents is-open c-switchingContainer__contents"
+                        data-switch-contents="type01">
+                        <!-- --- contents: score, piano --- -->
+                        <div id="content1">
+                            <div id="score_handler">
+                                <input type="checkbox" id="start_stop_button" class="start_stop_button">
+                                <label id="label_start_stop" for="start_stop_button"
+                                    class="label_start_stop">PLAY</label>
+                                <span>[音量注意]</span>
+                                <label for="set_bpm_input">BPM: </label>
+                                <input type="text" name="set_bpm" id="set_bpm_input">
+                                <button id="set_bpm_button">set BPM</button>
+                                <button id="clear_score_button">clear</button>
+                                <label for="check_auto_clear">AutoClearMode: </label>
+                                <input type="checkbox" id="check_auto_clear">
+                                <p id="bpm_disp">BPM: </p>
+                            </div> <!-- score_handler -->
+
+                            <div id="score" class="score">
+                                <!-- spanはテキスト必須 <span class="highlight"> </span> -->
+                                <div id="Bars">
+                                    <div id="barC6" class="bar_b">C6</div>
+                                    <div id="barB5" class="bar_a">B5</div>
+                                    <div id="barA5" class="bar_b">A5</div>
+                                    <div id="barG5" class="bar_a">G5</div>
+                                    <div id="barF5" class="bar_b">F5</div>
+                                    <div id="barE5" class="bar_a">E5</div>
+                                    <div id="barD5" class="bar_b">D5</div>
+                                    <div id="barC5" class="bar_a">C5</div>
+                                    <div id="barB4" class="bar_b">B4</div>
+                                    <div id="barA4" class="bar_a">A4</div>
+                                    <div id="barG4" class="bar_b">G4</div>
+                                    <div id="barF4" class="bar_a">F4</div>
+                                    <div id="barE4" class="bar_b">E4</div>
+                                    <div id="barD4" class="bar_a">D4</div>
+                                    <div id="barC4" class="bar_b">C4</div>
+                                    <div id="barB3" class="bar_a">B3</div>
+                                    <div id="barA3" class="bar_b">A3</div>
+                                    <div id="barG3" class="bar_a">G3</div>
+                                    <div id="barF3" class="bar_b">F3</div>
+                                    <div id="barE3" class="bar_a">E3</div>
+                                    <div id="barD3" class="bar_b">D3</div>
+                                    <div id="barC3" class="bar_a">C3</div>
+                                    <div id="barB2" class="bar_b">B2</div>
+                                    <div id="barA2" class="bar_a">A2</div>
+                                    <div id="barG2" class="bar_b">G2</div>
+                                    <div id="barF2" class="bar_a">F2</div>
+                                    <div id="barE2" class="bar_b">E2</div>
+                                    <div id="barD2" class="bar_a">D2</div>
+                                    <div id="barC2" class="bar_b">C2</div>
+                                </div>
+                                <div class="overlay_left"></div>
+                                <div class="line_left"></div>
+                                <div class="line_middle"></div>
+                                <div id="moving_line"></div>
+                            </div> <!-- score -->
+                        </div> <!-- content1 -->
+                    </div> <!-- switchingContents - type01 -->
+
+                    <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type02">
+                        <!-- --- contents: lyrics --- -->
+                        <div id="content2">
+                            <div id="display_lyrics">
+                                <div id="lyrics_display_box" class="lyrics_display_box"></div>
+                                <input type="checkbox" id="lyrics_switch_mode" class="lyrics_switch_mode" checked>
+                                <label id="lyrics_switch_mode_label" for="lyrics_switch_mode"
+                                    class="lyrics_switch_mode_label">音程入力モード</label>
+                            </div> <!-- display_lyrics -->
+                        </div> <!-- content2 -->
+                    </div> <!-- switchingContents - type02 -->
+
+                    <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type03">
+                        <div id="input_lyrics">
+                            <textarea name="lyrics_input_box" id="lyrics_input_box" class="lyrics_input_box" cols="20"
+                                rows="40"></textarea>
+                            <button id="decide_change_lyrics_button">変更</button>
+                        </div> <!-- input_lyrics -->
+                    </div> <!-- switchingContents - type03 -->
+                    <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type04">
+                        <!-- <textarea name="testarea2" id="testarea2" cols="20" rows="40"></textarea> -->
+                    </div> <!-- switchingContents - type04 -->
+                </div> <!-- switchingContainer -->
+
+                <div id="piano" class="piano"></div> <!-- piano -->
+            </div> <!-- c-switching -->
+
+            <!-- --- --- --- --- -->
+            <!-- debug console - -->
+            <!-- --- --- --- --- -->
+            <div id="debug">
+                <textarea name="console" id="console" class="console c1" cols="50" rows="10" readonly></textarea>
+                <textarea name="console2" id="console2" class="console c2" cols="50" rows="10" readonly></textarea>
+                <textarea name="console3" id="console3" class="console c3" cols="50" rows="10" readonly></textarea>
+                <textarea name="console4" id="console4" class="console c4" cols="50" rows="10" readonly></textarea>
+                <textarea name="console5" id="console5" class="console c5" cols="50"
+                    rows="10" readonly></textarea>
+                <textarea name="console6" id="console6" class="console c6" cols="50"
+                    rows="10" readonly></textarea>
+                <button id="hogehoge">CSS完全に理解した</button>
+            </div> <!-- debug -->
+        </div> <!-- TopContents -->
+
+        <!-- --- --- -->
+        <!-- sources -->
+        <!-- --- --- -->
+        <script src="./script/globals.js"></script>
+        <script src="./script/lists.js"></script>
+        <script src="./script/score_piano.js"></script>
+        <script src="./script/script_switch.js"></script>
+        <script src="./script/lyrics.js"></script>
+        <script src="./script/onload.js"></script>
+        <script src="./script/test.js"></script>
     </div>
-
-    <!-- --- --- --- --- -->
-    <!-- main contents - -->
-    <!-- --- --- --- --- -->
-    <div class="c-switching">
-        <div class="c-switchingTabs">
-            <button class="js-switchingTab is-current c-switchingTabs__tab" type="button"
-                data-switch-tab="type01"><span>1.SCORE</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type02"><span>2.LYRICS</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type03"><span>3.INPUT</span></button>
-            <button class="js-switchingTab c-switchingTabs__tab" type="button" data-switch-tab="type04"><span>最高音周りとか</span></button>
-        </div>
-
-        <div class="c-switchingContainer">
-            <div class="js-switchingContents is-open c-switchingContainer__contents" data-switch-contents="type01">
-                <!-- --- contents: score, piano --- -->
-                <div id="content1">
-                    <div id="score_handler">
-                        <input type="checkbox" id="start_stop_button" class="start_stop_button">
-                        <label id="label_start_stop" for="start_stop_button" class="label_start_stop">PLAY</label>
-                        <span>[音量注意]</span>
-                        <label for="set_bpm_input">BPM: </label>
-                        <input type="text" name="set_bpm" id="set_bpm_input">
-                        <button id="set_bpm_button">set BPM</button>
-                        <button id="clear_score_button">clear</button>
-                        <label for="check_auto_clear">AutoClearMode: </label>
-                        <input type="checkbox" id="check_auto_clear">
-                        <p id="bpm_disp">BPM: </p>
-                    </div>
-
-                    <div id="score" class="score">
-                        <!-- spanはテキスト必須 <span class="highlight"> </span> -->
-                        <div id="Bars">
-                            <div id="barC6" class="bar_b">C6</div>
-                            <div id="barB5" class="bar_a">B5</div>
-                            <div id="barA5" class="bar_b">A5</div>
-                            <div id="barG5" class="bar_a">G5</div>
-                            <div id="barF5" class="bar_b">F5</div>
-                            <div id="barE5" class="bar_a">E5</div>
-                            <div id="barD5" class="bar_b">D5</div>
-                            <div id="barC5" class="bar_a">C5</div>
-                            <div id="barB4" class="bar_b">B4</div>
-                            <div id="barA4" class="bar_a">A4</div>
-                            <div id="barG4" class="bar_b">G4</div>
-                            <div id="barF4" class="bar_a">F4</div>
-                            <div id="barE4" class="bar_b">E4</div>
-                            <div id="barD4" class="bar_a">D4</div>
-                            <div id="barC4" class="bar_b">C4</div>
-                            <div id="barB3" class="bar_a">B3</div>
-                            <div id="barA3" class="bar_b">A3</div>
-                            <div id="barG3" class="bar_a">G3</div>
-                            <div id="barF3" class="bar_b">F3</div>
-                            <div id="barE3" class="bar_a">E3</div>
-                            <div id="barD3" class="bar_b">D3</div>
-                            <div id="barC3" class="bar_a">C3</div>
-                            <div id="barB2" class="bar_b">B2</div>
-                            <div id="barA2" class="bar_a">A2</div>
-                            <div id="barG2" class="bar_b">G2</div>
-                            <div id="barF2" class="bar_a">F2</div>
-                            <div id="barE2" class="bar_b">E2</div>
-                            <div id="barD2" class="bar_a">D2</div>
-                            <div id="barC2" class="bar_b">C2</div>
-                        </div>
-                        <div class="overlay_left"></div>
-                        <div class="line_left"></div>
-                        <div class="line_middle"></div>
-                        <div id="moving_line"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type02">
-                <!-- --- contents: lyrics --- -->
-                <div id="content2">
-                    <div id="display_lyrics">
-                        <div id="lyrics_display_box" class="lyrics_display_box"></div>
-                        <input type="checkbox" id="lyrics_switch_mode" class="lyrics_switch_mode" checked>
-                        <label id="lyrics_switch_mode_label" for="lyrics_switch_mode" class="lyrics_switch_mode_label">音程入力モード</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type03">
-                <div id="input_lyrics">
-                        <textarea name="lyrics_input_box" id="lyrics_input_box" class="lyrics_input_box" cols="20" rows="40"></textarea>
-                        <button id="decide_change_lyrics_button">変更</button>
-                    </div>
-                </div>
-            </div>
-            <div class="js-switchingContents c-switchingContainer__contents" data-switch-contents="type04">
-                <!-- <textarea name="testarea2" id="testarea2" cols="20" rows="40"></textarea> -->
-            </div>
-        </div>
-    </div>
-    <div id="piano" class="piano"></div>
-
-
-    <!-- --- --- -->
-    <!-- sources -->
-    <!-- --- --- -->
-    <script src="./script/globals.js"></script>
-    <script src="./script/lists.js"></script>
-    <script src="./script/score_piano.js"></script>
-    <script src="./script/script_switch.js"></script>
-    <script src="./script/lyrics.js"></script>
-    <script src="./script/onload.js"></script>
-    <script src="./script/test.js"></script>
 </body>
 
 <!-- 参考 -->

@@ -1,18 +1,20 @@
 function popBackFromInputNotes() {
-    if (pitchArray.length) { // 空じゃなければ
-        pitchArray.pop();
+    if (inputPitchArray.length) { // 空じゃなければ
+        inputPitchArray.pop();
     }
 }
 
 function inputNotesToLyrics(note) {
-    if (note) {
-        pitchArray.push(note);
+    if (inputPitchArray.length < inputLyricsArray.length) { // 歌詞の文字数より音程列が大きくならないようにする
+        if (note) {
+            inputPitchArray.push(note);
+        }
     }
 }
 
 function changeLyricsTextColor() {
     if (type02Tab.classList.contains('is-current')) {
-        let linesArray = lyrics.split("\n"); // 行ごとに分割
+        let linesArray = inputLyricsArray.split("\n"); // 行ごとに分割
         lyricsBox.innerHTML = ""; // 一回初期化する。
 
         for (let i = 0; i < linesArray.length; i++) {
@@ -21,7 +23,7 @@ function changeLyricsTextColor() {
 
             for (let j = 0; j < charactersArray.length; j++) {
                 let character = charactersArray[j];
-                let pitch = pitchArray[j]; // 音程の配列から音程を取得
+                let pitch = inputPitchArray[j]; // 音程の配列から音程を取得
                 let color = pitch ? "rgb(" + pitchColorDict[pitch].join(",") + ")" : "rgb(128,128,128)"; // 音程に対応する色を取得、もしくはgray
 
                 let charDiv = document.createElement("div");
@@ -61,8 +63,15 @@ function changeLyricsTextColor() {
 setInterval(changeLyricsTextColor, 50);
 
 function changeLyricsText() {
-    let inputText = InputLyrics.value;
-    lyrics = inputText;
+    // 入力ボックスから取ってきてinputLyricsArrayで保持する
+    inputLyricsArray = inputLyrics.value;
+    // inputPitchArrayのサイズを調整する // 多い分だけpopで減らす
+    if (inputPitchArray.length > inputLyricsArray.length) {
+        let gap = inputPitchArray.length - inputLyricsArray.length;
+        for (let i = 0; i < gap; i++) {
+            inputPitchArray.pop();
+        }
+    }
 }
 
 changeLyricsButton.addEventListener('click', changeLyricsText);

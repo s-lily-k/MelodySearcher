@@ -25,18 +25,42 @@
 /* --- --- debug console - --- --- */
 /* --- --- --- --- --- --- --- --- */
 
-/* debug console 全体 */
+/* debug console */
 .console {
+    width: 100px;
+    height: 100px;
+    font-size: 15px;
+    line-height: 1; /* 行間の距離 */
+}
+.console.c1, .console.c2{
+    width: 100px;
+    height: 100px;
+}
+
+.console.c3 {
+    width: 300px;
+}
+
+.console.c4 {
     width: 200px;
-    height: 50px;
-    /* font-size: small; */
+}
+
+.console.c5, .console.c6 {
+    width: 300px;
 }
 
 /* --- --- --- --- --- */
 /* --- --- main -- --- */
 /* --- --- --- --- --- */
 
-/* 全体 */
+/* すべてに適用 */
+* {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* <body></body> 全体 */
 body {
     display: flex;
     justify-content: center;
@@ -46,4 +70,12 @@ body {
     height: auto;
     
     background-color: #c6e1a7;
+}
+
+#TopContents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 10px;
 }

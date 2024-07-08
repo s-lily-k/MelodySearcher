@@ -91,7 +91,6 @@ function drawScore() {
     if (type01Tab.classList.contains('is-current') && scoreIsActive) {
         Object.entries(isKeyDown).forEach(([note, value]) => {
             if (value === true) {
-                MyConsole2.textContent = "note: " + note + "\n";
                 try {
                     let nowat = scoreMovingLine.style.left;
                     let target = find456(parseFloat(nowat));
@@ -111,7 +110,7 @@ function drawScore() {
                     }
                     bar.innerHTML += addString;
                 } catch (error) {
-                    MyConsole.textContent = error;
+                    MyConsole.textContent = "e: " + error;
                 }
             }
         });
@@ -124,7 +123,7 @@ function isPlaying(audioElement) {
 }
 
 let fadeOutOffset = 0.001;
-let fastFadeOutOffset = 0.008;
+let fastFadeOutOffset = 0.006;
 
 function PlaySound() {
     MyConsole.textContent = "";
@@ -133,7 +132,7 @@ function PlaySound() {
         Object.keys(pianoKeys).forEach(note => { // 全キーを調査
             // MyConsole4.textContent += note + ": " + isThisKeyFirstDown[note] + "\n";
             if (isKeyDown[note] == true) { // 押されてる
-                MyConsole.textContent += note + "\n"; // debug
+                MyConsole.textContent += "Note: " + note + "\n"; // debug
                 if (isThisKeyFirstDown[note]) { // 長押しの始めの時か？
                     // keyupしたときにtrueになる
                     isThisKeyFirstDown[note] = false;
