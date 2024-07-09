@@ -209,13 +209,22 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-window.addEventListener('keyup', (event) => {
-    // tab1が選ばれていれば
+window.addEventListener('keyup', (e) => {
     // space key で on/off切り替え用
-    if (type01Tab.classList.contains('is-current')) {
-        if (event.key == ' ') {
+    if (e.key == 'Enter') {
+        // tab1が選ばれていれば再生ボタン
+        if (type01Tab.classList.contains('is-current')) {
             // scoreIsActive = !scoreIsActive;
             scoreStartStopButton.click();
+        }
+        // tab2は入力モード切り替え
+        else if (type02Tab.classList.contains('is-current')) {
+            // チェックボタンは反転
+            switchInputNoteMode.checked = !switchInputNoteMode.checked;
+        }
+        // tab3は変更ボタン
+        else if (type03Tab.classList.contains('is-current')) {
+            changeLyricsButton.click();
         }
     }
 });

@@ -25,7 +25,8 @@
                     <button class="js-switchingTab c-switchingTabs__tab" type="button"
                         data-switch-tab="type03"><span>3.INPUT</span></button>
                     <button class="js-switchingTab c-switchingTabs__tab" type="button"
-                        data-switch-tab="type04"><span>最高音周りとか</span></button>
+                        data-switch-tab="type04"><span>---</span></button>
+                        <!-- 最高音周りとか -->
                 </div> <!-- c-switchingTabs -->
 
                 <div class="c-switchingContainer">
@@ -36,7 +37,7 @@
                             <div id="score_handler">
                                 <input type="checkbox" id="start_stop_button" class="start_stop_button">
                                 <label id="label_start_stop" for="start_stop_button"
-                                    class="label_start_stop">PLAY</label>
+                                    class="label_start_stop">PLAY</label>(Enter)<br>
                                 <span>[音量注意]</span>
                                 <label for="set_bpm_input">BPM: </label>
                                 <input type="text" name="set_bpm" id="set_bpm_input">
@@ -95,7 +96,7 @@
                                 <div id="lyrics_display_box" class="lyrics_display_box"></div>
                                 <input type="checkbox" id="lyrics_switch_mode" class="lyrics_switch_mode" checked>
                                 <label id="lyrics_switch_mode_label" for="lyrics_switch_mode"
-                                    class="lyrics_switch_mode_label">音程入力モード</label>
+                                    class="lyrics_switch_mode_label">音程入力モード(Enter:on/off)</label>
                             </div> <!-- display_lyrics -->
                         </div> <!-- content2 -->
                     </div> <!-- switchingContents - type02 -->
@@ -104,7 +105,7 @@
                         <div id="input_lyrics">
                             <textarea name="lyrics_input_box" id="lyrics_input_box" class="lyrics_input_box" cols="20"
                                 rows="40"></textarea>
-                            <button id="decide_change_lyrics_button">変更</button>
+                            <button id="decide_change_lyrics_button">変更(Enter)</button>
                             <span><br>☑ 空白や改行はokです。<br>☑ 音程が入力された後に空白の位置を変えるとズレるので一旦消してください。<br>[❕️] 行の先頭に空白があるとその後がズレるっぽいです。<br>[❕️] これら以外で意図してない挙動がある場合多分バグなので不便なら伝えて頂けると助かります。</span>
                         </div> <!-- input_lyrics -->
                     </div> <!-- switchingContents - type03 -->

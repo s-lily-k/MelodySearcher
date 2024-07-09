@@ -49,8 +49,10 @@ const switchingTabs = document.querySelectorAll('.js-switchingTab');
 const switchingContents = document.querySelectorAll('.js-switchingContents');
 const type01Tab = document.querySelector('.js-switchingTab[data-switch-tab="type01"]');
 const type02Tab = document.querySelector('.js-switchingTab[data-switch-tab="type02"]');
+const type03Tab = document.querySelector('.js-switchingTab[data-switch-tab="type03"]');
 
 // lyrics表示用
 const inputLyrics = document.getElementById('lyrics_input_box');
 const lyricsBox = document.getElementById("lyrics_display_box");
 const changeLyricsButton = document.getElementById('decide_change_lyrics_button')
+const switchInputNoteMode = document.getElementById('lyrics_switch_mode');

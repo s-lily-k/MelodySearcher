@@ -1,36 +1,42 @@
 function popBackFromInputNotes() {
-    if (inputPitchArray.length) { // 空じゃなければ
-        /* 空白じゃなくなるまで消す */
-        let k = inputPitchArray.length;
-        let rest = k;
-        for (let i = 0; i < k; i++) {
-            if (inputPitchArray[k - i - 1] === "_" || inputPitchArray[k - i - 1] === "　") {
-                inputPitchArray.pop();
-                rest--;
+    // チェックボックス次第。
+    if (switchInputNoteMode.checked) {
+        if (inputPitchArray.length) { // 空じゃなければ
+            /* 空白じゃなくなるまで消す */
+            let k = inputPitchArray.length;
+            let rest = k;
+            for (let i = 0; i < k; i++) {
+                if (inputPitchArray[k - i - 1] === "_" || inputPitchArray[k - i - 1] === "　") {
+                    inputPitchArray.pop();
+                    rest--;
+                }
+                else {
+                    break;
+                }
             }
-            else {
-                break;
-            }
+            inputPitchArray.pop();
         }
-        inputPitchArray.pop();
     }
 }
 
 function inputNotesToLyrics(note) {
-    if (inputPitchArray.length < inputLyricsArray.length) { // 歌詞の文字数より音程列が大きくならないようにする
-        if (note) {
-            let gap = inputLyricsArray.length - inputPitchArray.length;
+    // チェックボックス次第。
+    if (switchInputNoteMode.checked) {
+        if (inputPitchArray.length < inputLyricsArray.length) { // 歌詞の文字数より音程列が大きくならないようにする
+            if (note) {
+                let gap = inputLyricsArray.length - inputPitchArray.length;
 
-            inputPitchArray.push(note);
+                inputPitchArray.push(note);
 
-            if (gap >= 1) {
-                for (let i = 0; i < gap; i++) {
-                    // 連続する空白を一つの空白として扱う
-                    if ((inputLyricsArray[inputPitchArray.length + i] === " " || inputLyricsArray[inputPitchArray.length + i] === "　") && inputPitchArray[inputPitchArray.length - 1] !== "_") {
-                        inputPitchArray.push("_");
-                    }
-                    else {
-                        break;
+                if (gap >= 1) {
+                    for (let i = 0; i < gap; i++) {
+                        // 連続する空白を一つの空白として扱う
+                        if ((inputLyricsArray[inputPitchArray.length + i] === " " || inputLyricsArray[inputPitchArray.length + i] === "　") && inputPitchArray[inputPitchArray.length - 1] !== "_") {
+                            inputPitchArray.push("_");
+                        }
+                        else {
+                            break;
+                        }
                     }
                 }
             }
@@ -129,5 +135,4 @@ function changeLyricsText() {
         inputPitchArray.pop();
     }
 }
-
 changeLyricsButton.addEventListener('click', changeLyricsText);
