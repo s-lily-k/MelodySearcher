@@ -39,7 +39,8 @@
 /* 譜面全体 */
 .score {
     position: relative;
-    width: 800px;
+    /* width: 800px; */
+    width: 950px;
     height: 406px; /* 14 * 29 */
     margin-bottom: 10px;
     background-color: #aaa;

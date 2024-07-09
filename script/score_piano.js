@@ -280,3 +280,12 @@ window.addEventListener('keyup', function (e) {
         setKeyInActive(keyboardBindings[key]); // 非active化
     }
 });
+
+// 譜面のサイズ変更用
+scoreBigButton.addEventListener('click', (e) => {
+    scoreDisplay.style.width = "950px";
+});
+
+scoreSmallButton.addEventListener('click', (e) => {
+    scoreDisplay.style.width = "750px";
+});

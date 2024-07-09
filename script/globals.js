@@ -56,3 +56,8 @@ const inputLyrics = document.getElementById('lyrics_input_box');
 const lyricsBox = document.getElementById("lyrics_display_box");
 const changeLyricsButton = document.getElementById('decide_change_lyrics_button')
 const switchInputNoteMode = document.getElementById('lyrics_switch_mode');
+
+// scoreサイズ用
+const scoreDisplay = document.getElementById('score');
+const scoreBigButton = document.getElementById('score_big_button');
+const scoreSmallButton = document.getElementById('score_small_button');

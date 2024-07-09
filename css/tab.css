@@ -65,7 +65,7 @@ small {
 }
 
 .c-switchingContainer {
-    max-width: min(90%, 1000px);
+    max-width: min(100%, 1000px);
     width: 100%;
     padding: 1em 1em 1em;
     border: 1px solid #333;

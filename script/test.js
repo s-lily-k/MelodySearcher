@@ -31,7 +31,7 @@ function checkNewLineIndices() {
 }
 
 function checkIsKeyDown() {
-    MyConsole2.textContent = "[isThisKeyFirstDown] : \n";
+    MyConsole2.textContent = "[FirstDown] : \n";
     let n = 54;
     // let values = Object.values(isKeyDown);
     let values = Object.values(isThisKeyFirstDown);

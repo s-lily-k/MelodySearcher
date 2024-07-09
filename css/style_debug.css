@@ -2,6 +2,10 @@
 /* --- --- debug console - --- --- */
 /* --- --- --- --- --- --- --- --- */
 
+#debug {
+    text-align: right;
+}
+
 /* debug console */
 .console {
     width: 100px;
@@ -16,7 +20,7 @@
 }
 
 .console.c2 {
-    width: 480px;
+    width: 340px;
 }
 
 .console.c3 {

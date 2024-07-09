@@ -42,6 +42,8 @@
                                 <label for="set_bpm_input">BPM: </label>
                                 <input type="text" name="set_bpm" id="set_bpm_input">
                                 <button id="set_bpm_button">set BPM</button>
+                                <button id="score_big_button">譜面サイズ:大(default)</button>
+                                <button id="score_small_button">譜面サイズ:小</button>
                                 <button id="clear_score_button">clear</button>
                                 <label for="check_auto_clear">AutoClearMode: </label>
                                 <input type="checkbox" id="check_auto_clear">
@@ -96,7 +98,7 @@
                                 <div id="lyrics_display_box" class="lyrics_display_box"></div>
                                 <input type="checkbox" id="lyrics_switch_mode" class="lyrics_switch_mode" checked>
                                 <label id="lyrics_switch_mode_label" for="lyrics_switch_mode"
-                                    class="lyrics_switch_mode_label">音程入力モード(Enter:on/off)</label>
+                                    class="lyrics_switch_mode_label">音程入力モード(Enter:on/off)<br>☑ onならキーボードorクリックで音程を順に入力できます。<br>☑ offにすると音を鳴らしてすぐ確認できるので便利です。</label>
                             </div> <!-- display_lyrics -->
                         </div> <!-- content2 -->
                     </div> <!-- switchingContents - type02 -->
@@ -121,6 +123,13 @@
             <!-- debug console - -->
             <!-- --- --- --- --- -->
             <div id="debug">
+                <span id="explain">
+                    tab1で譜面と一緒に演奏できます。tab2で歌詞に音程を入力できます。tab3で歌詞を入力できます。<br>
+                    27inchのモニターで100%表示くらいを想定しているので<br>なんか崩れて見づらかったらｽﾐﾏｾﾝ……_(:3 」∠ )_<br>(調整したので多分大丈夫……)<br>
+                    BPMがおかしかったら多分環境によって計算がズレてます<br>(150BPMで大体1.6xx秒です)のであくまで速度変更の目安です。<br>
+                    以下debug用
+                </span>
+                <br>
                 <textarea name="console" id="console" class="console c1" cols="50" rows="10" readonly></textarea>
                 <textarea name="console2" id="console2" class="console c2" cols="50" rows="10" readonly></textarea>
                 <textarea name="console3" id="console3" class="console c3" cols="50" rows="10" readonly></textarea>

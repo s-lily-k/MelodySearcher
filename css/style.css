@@ -32,6 +32,10 @@
     color: #333;
 }
 
+#explain {
+    font-size: 14px;
+}
+
 /* <body></body> 全体 */
 body {
     display: flex;
