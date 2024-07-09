@@ -25,7 +25,8 @@ function inputNotesToLyrics(note) {
 
             if (gap >= 1) {
                 for (let i = 0; i < gap; i++) {
-                    if (inputLyricsArray[inputPitchArray.length + i] === " " || inputLyricsArray[inputPitchArray.length + i] === "　") {
+                    // 連続する空白を一つの空白として扱う
+                    if ((inputLyricsArray[inputPitchArray.length + i] === " " || inputLyricsArray[inputPitchArray.length + i] === "　") && inputPitchArray[inputPitchArray.length - 1] !== "_") {
                         inputPitchArray.push("_");
                     }
                     else {
@@ -36,6 +37,7 @@ function inputNotesToLyrics(note) {
         }
     }
 }
+
 
 function changeLyricsTextColor() {
     if (type02Tab.classList.contains('is-current')) {
@@ -54,10 +56,6 @@ function changeLyricsTextColor() {
                     lyricsBox.appendChild(document.createElement("br"));
                 }
                 let character = charactersArray[j];
-                // 全角空白は半角空白として扱う
-                if (character === "　") {
-                    character = " ";
-                }
 
                 let pitch = inputPitchArray[absoluteIndex]; // 音程の配列から音程を取得
                 let color = pitchColorDict[pitch] ? "rgb(" + pitchColorDict[pitch].join(",") + ")" : "rgb(128,128,128)"; // 音程に対応する色を取得、もしくはgray
@@ -106,6 +104,12 @@ function changeLyricsText() {
     // 入力ボックスから取ってきてinputLyricsArrayで保持する
     inputLyricsArray = inputLyrics.value;
 
+    // 全角空白を半角空白に変換する
+    inputLyricsArray = inputLyricsArray.replace(/　/g, ' ');
+
+    // 連続する空白を一つの空白に置換する
+    inputLyricsArray = inputLyricsArray.replace(/ +/g, ' ');
+
     // 後ろの空白は削除する
     while (inputLyricsArray.endsWith(" ")) {
         inputLyricsArray = inputLyricsArray.slice(0, -1); // pop()と同じ
@@ -113,8 +117,8 @@ function changeLyricsText() {
 
     // 改行位置を初期化し、新たに保持する
     newLineIndices = [];
-    for(let i = 0; i < inputLyricsArray.length; i++) {
-        if(inputLyricsArray[i] === '\n') {
+    for (let i = 0; i < inputLyricsArray.length; i++) {
+        if (inputLyricsArray[i] === '\n') {
             newLineIndices.push(i);
         }
     }
