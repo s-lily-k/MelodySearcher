@@ -12,6 +12,7 @@ for (let i = 0; i < 4; i++) {
             setKeyActive(this.dataset.note); // アニメーション
             setKeyIsDown(this.dataset.note); // 判定
             setKeyClickedLast(this.dataset.note); // 判定2
+            inputNotesToLyrics(this.dataset.note); // 歌詞音程入力用
         });
         key.addEventListener('mouseup', function () {
             setKeyInActive(this.dataset.note); // アニメーション
@@ -33,6 +34,7 @@ for (let i = 0; i < 4; i++) {
                 setKeyActive(this.dataset.note); // アニメーション
                 setKeyIsDown(this.dataset.note); // 判定
                 setKeyClickedLast(this.dataset.note); // 判定2
+                inputNotesToLyrics(this.dataset.note); // 歌詞音程入力用
             });
             blackKey.addEventListener('mouseup', function () {
                 setKeyInActive(this.dataset.note, fastFadeOutOffset); // アニメーション
