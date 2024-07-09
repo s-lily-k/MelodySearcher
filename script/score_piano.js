@@ -125,37 +125,35 @@ function isPlaying(audioElement) {
 function PlaySound() {
     MyConsole.textContent = "";
     MyConsole4.textContent = "";
-    if (scoreIsActive) {
-        Object.keys(pianoKeys).forEach(note => { // 全キーを調査
-            // MyConsole4.textContent += note + ": " + isThisKeyFirstDown[note] + "\n";
-            if (isKeyDown[note] == true) { // 押されてる
-                MyConsole.textContent += "Note: " + note + "\n"; // debug
-                if (isThisKeyFirstDown[note]) { // 長押しの始めの時か？
-                    // keyupしたときにtrueになる
-                    isThisKeyFirstDown[note] = false;
-                    /* if isPlaying or not 再生中であろうと必ずここに来る。 */
-                    // 再生を0地点に戻す
-                    audioElements[note].currentTime = 0;
-                    // 音量を元に戻す
-                    audioElements[note].volume = 1.0;
-                    // 再生開始
-                    audioElements[note].play();
-                }
-                else { // 長押し中か？
-                    // もう音を鳴らしたはずなので追加は何もしない
-                    // 既に鳴ってる音をフェードさせる
-                    fadeOutSound(audioElements[note], fadeOutOffset);
-                }
+    Object.keys(pianoKeys).forEach(note => { // 全キーを調査
+        // MyConsole4.textContent += note + ": " + isThisKeyFirstDown[note] + "\n";
+        if (isKeyDown[note] == true) { // 押されてる
+            MyConsole.textContent += "Note: " + note + "\n"; // debug
+            if (isThisKeyFirstDown[note]) { // 長押しの始めの時か？
+                // keyupしたときにtrueになる
+                isThisKeyFirstDown[note] = false;
+                /* if isPlaying or not 再生中であろうと必ずここに来る。 */
+                // 再生を0地点に戻す
+                audioElements[note].currentTime = 0;
+                // 音量を元に戻す
+                audioElements[note].volume = 1.0;
+                // 再生開始
+                audioElements[note].play();
             }
-            else if (isKeyDown[note] == false) { // 押されてない
-                /* 速いペースでフェードアウトする */
-                fadeOutSound(audioElements[note], fastFadeOutOffset);
+            else { // 長押し中か？
+                // もう音を鳴らしたはずなので追加は何もしない
+                // 既に鳴ってる音をフェードさせる
+                fadeOutSound(audioElements[note], fadeOutOffset);
             }
-            if (isPlaying(audioElements[note])) {
-                MyConsole4.textContent += note + " is playing " + "\n";
-            }
-        });
-    }
+        }
+        else if (isKeyDown[note] == false) { // 押されてない
+            /* 速いペースでフェードアウトする */
+            fadeOutSound(audioElements[note], fastFadeOutOffset);
+        }
+        if (isPlaying(audioElements[note])) {
+            MyConsole4.textContent += note + " is playing " + "\n";
+        }
+    });
 }
 setInterval(PlaySound, 1);
 
