@@ -13,19 +13,6 @@ function popBackFromInputNotes() {
             }
         }
         inputPitchArray.pop();
-        // /* 空白じゃなくなるまで消す */
-        // k = inputPitchArray.length;
-        // rest = k;
-        // for (let i = 0; i < k; i++) {
-        //     if (inputPitchArray[k - i - 1] === "_" || inputPitchArray[k - i - 1] === "　") {
-        //         inputPitchArray.pop();
-        //         rest--;
-        //     }
-        //     else {
-        //         break;
-        //     }
-        // }
-        // MyConsole2.textContent = rest;
     }
 }
 
@@ -46,21 +33,6 @@ function inputNotesToLyrics(note) {
                     }
                 }
             }
-            // /* 空白があるときは音程配列にも空白を入れておく */
-            // gap = inputLyricsArray.length - inputPitchArray.length;
-            // if (gap >= 1) {
-            //     for (let i = 0; i < gap; i++) {
-            //         if (inputLyricsArray[inputPitchArray.length + i] === "\n") {
-            //             inputPitchArray.push("NEWLINE");
-            //         }
-            //         else if (inputLyricsArray[inputPitchArray.length + i] === " " || inputLyricsArray[inputPitchArray.length + i] === "　") {
-            //             inputPitchArray.push("_");
-            //         }
-            //         else {
-            //             break;
-            //         }
-            //     }
-            // }
         }
     }
 }

@@ -30,7 +30,26 @@ function checkNewLineIndices() {
     MyConsole2.textContent = newLineIndices.join(", ");
 }
 
+function checkIsKeyDown() {
+    MyConsole2.textContent = "[isThisKeyFirstDown] : \n";
+    let n = 54;
+    // let values = Object.values(isKeyDown);
+    let values = Object.values(isThisKeyFirstDown);
+    values = values.map(value => value ? ' true' : 'false');
+    
+    let result = '';
+    for (let i = 0; i < values.length; i++) {
+        if (i !== 0 && i % n === 0) {
+            result += '\n';
+        }
+        result += values[i] + ', ';
+    }
+    
+    MyConsole2.textContent += result;
+}
+
 setInterval(checkIsKeyDown, 10);
 setInterval(checkInputPitchArray, 10);
 setInterval(checkInputLyricsArray, 10);
-setInterval(checkNewLineIndices, 10);
+// setInterval(checkNewLineIndices, 10);
+setInterval(checkIsKeyDown, 10);

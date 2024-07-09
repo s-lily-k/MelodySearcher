@@ -122,9 +122,6 @@ function isPlaying(audioElement) {
     return !audioElement.paused;
 }
 
-let fadeOutOffset = 0.001;
-let fastFadeOutOffset = 0.006;
-
 function PlaySound() {
     MyConsole.textContent = "";
     MyConsole4.textContent = "";
@@ -170,6 +167,20 @@ function fadeOutSound(audioElement, offset) {
     }
 }
 
+function setKeyClickedLast(note) {
+    lastClickedKey = note;
+}
+
+document.addEventListener('mouseup', (e) => {
+    // 鍵盤に存在するキーなら
+    if (pianoKeys[lastClickedKey]) {
+        setKeyUpForClicking();
+    }
+});
+
+function setKeyUpForClicking() {
+    isThisKeyFirstDown[lastClickedKey] = true;
+}
 
 // addEventListener //
 scoreStartStopButton.addEventListener('click', flipScore);
@@ -237,7 +248,6 @@ window.addEventListener('keyup', (event) => {
         isThisKeyFirstDown[keyboardBindings[key]] = true;
     }
 });
-
 
 // これもキーボードとマウス用にfunction化
 function setKeyActive(note) {

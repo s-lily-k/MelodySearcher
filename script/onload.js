@@ -9,17 +9,15 @@ for (let i = 0; i < 4; i++) {
         key.dataset.note = whiteKeys[j] + (i + 2); // Adjusted the octave
         // key.textContent = key.dataset.note;
         key.addEventListener('mousedown', function () {
-            playSound(this.dataset.note); // 音
             setKeyActive(this.dataset.note); // アニメーション
             setKeyIsDown(this.dataset.note); // 判定
+            setKeyClickedLast(this.dataset.note); // 判定2
         });
         key.addEventListener('mouseup', function () {
-            fadeOutSound(this.dataset.note); // 音
             setKeyInActive(this.dataset.note); // アニメーション
             setKeyIsNotDown(this.dataset.note); // 判定
         });
         key.addEventListener('mouseout', function () {
-            fadeOutSound(this.dataset.note); // 音
             setKeyInActive(this.dataset.note); // アニメーション
             setKeyIsNotDown(this.dataset.note); // 判定
         });
@@ -32,17 +30,15 @@ for (let i = 0; i < 4; i++) {
             blackKey.dataset.note = blackKeys[j] + (i + 2); // Adjusted the octave
             // blackKey.textContent = blackKey.dataset.note;
             blackKey.addEventListener('mousedown', function () {
-                playSound(this.dataset.note); // 音
                 setKeyActive(this.dataset.note); // アニメーション
                 setKeyIsDown(this.dataset.note); // 判定
+                setKeyClickedLast(this.dataset.note); // 判定2
             });
             blackKey.addEventListener('mouseup', function () {
-                fadeOutSound(this.dataset.note); // 音
-                setKeyInActive(this.dataset.note); // アニメーション
+                setKeyInActive(this.dataset.note, fastFadeOutOffset); // アニメーション
                 setKeyIsNotDown(this.dataset.note); // 判定
             });
             blackKey.addEventListener('mouseout', function () {
-                fadeOutSound(this.dataset.note); // 音
                 setKeyInActive(this.dataset.note); // アニメーション
                 setKeyIsNotDown(this.dataset.note); // 判定
             });

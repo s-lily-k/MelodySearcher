@@ -39,14 +39,18 @@ const defaultScoreBPM = 150;
 let scoreBPM = defaultScoreBPM;
 let startTime = null;
 
+// PlaySound用
+let fadeOutOffset = 0.001;
+let fastFadeOutOffset = 0.006;
+let lastClickedKey = "";
 
-// HTML要素を取得
+// switch Tab用
 const switchingTabs = document.querySelectorAll('.js-switchingTab');
 const switchingContents = document.querySelectorAll('.js-switchingContents');
 const type01Tab = document.querySelector('.js-switchingTab[data-switch-tab="type01"]');
 const type02Tab = document.querySelector('.js-switchingTab[data-switch-tab="type02"]');
 
-// lyrics
+// lyrics表示用
 const inputLyrics = document.getElementById('lyrics_input_box');
 const lyricsBox = document.getElementById("lyrics_display_box");
 const changeLyricsButton = document.getElementById('decide_change_lyrics_button')
